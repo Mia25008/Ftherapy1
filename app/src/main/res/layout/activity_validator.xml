@@ -5,5 +5,6 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FDEBE9"
-    tools:context=".screens.MainActivity" />
+    tools:context=".utils.ValidatorActivity">
+
+</androidx.constraintlayout.widget.ConstraintLayout>

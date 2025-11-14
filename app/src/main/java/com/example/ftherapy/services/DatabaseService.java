@@ -84,7 +84,7 @@ public class DatabaseService {
     /// @param data the data to write (can be any object, but must be serializable, i.e. must have a default constructor and all fields must have getters and setters)
     /// @param callback the callback to call when the operation is completed
     /// @see DatabaseCallback
-    private void writeData(@NotNull final String path, @NotNull final Object data, final @Nullable DatabaseCallback<Void> callback) {
+    private void writeData(@NotNull final String path, @NotNull final Object data, final DatabaseCallback<Void> callback) {
         readData(path).setValue(data, (error, ref) -> {
             if (error != null) {
                 if (callback == null) return;
