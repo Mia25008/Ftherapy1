@@ -45,10 +45,14 @@ public class RegisterActivity extends AppCompatActivity {
 
         /// get the views
         etFName = findViewById(R.id.first_name_register);
-        etLName = findViewById(R.id.last_name_register);        etEmail = findViewById(R.id.email_register);
+        etLName = findViewById(R.id.last_name_register);
+        etEmail = findViewById(R.id.email_register);
         etPassword = findViewById(R.id.password_register);
         etPhone = findViewById(R.id.phone_register);
         etAge = findViewById(R.id.age_register);
+
+        btnRegister.setOnClickListener(this);
+        tvLogin.setOnClickListener(this);
 
     }
 
@@ -58,14 +62,16 @@ public class RegisterActivity extends AppCompatActivity {
                     Log.d(TAG, "onClick: Register button clicked");
 
                     /// get the input from the user
-                    String uName = etFname.getText().toString();
+                    String fName = etFName.getText().toString();
+                    String lName = etLName.getText().toString();
                     String password = etPassword.getText().toString();
                     String email = etEmail.getText().toString();
                     String phone = etPhone.getText().toString();
                     String age = etAge.getText().toString();
 
                     /// log the input
-                    Log.d(TAG, "onClick: User Name: " + uName);
+                    Log.d(TAG, "onClick: First Name: " + fName);
+                    Log.d(TAG, "onClick: Last Name: " + lName);
                     Log.d(TAG, "onClick: Password: " + password);
                     Log.d(TAG, "onClick: Email: " + email);
                     Log.d(TAG, "onClick: Phone: " + phone);
@@ -74,7 +80,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                     /// Validate input
                     Log.d(TAG, "onClick: Validating input...");
-                    if (!checkInput(etFname, password, email, phone, age)) {
+                    if (!checkInput(fName, lName, password, email, phone, age)) {
                         /// stop if input is invalid
                         return;
                     }
@@ -82,7 +88,7 @@ public class RegisterActivity extends AppCompatActivity {
                     Log.d(TAG, "onClick: Registering user...");
 
                     /// Register user
-                    registerUser(etFname, password, email, phone, age);
+                    registerUser(fName, lName, password, email, phone, age);
                 } else if (v.getId() == tvLogin.getId()) {
                     /// Navigate back to Login Activity
                     finish();
@@ -92,7 +98,7 @@ public class RegisterActivity extends AppCompatActivity {
             /// Check if the input is valid
             /// @return true if the input is valid, false otherwise
             /// @see Validator
-            private boolean checkInput(String email, String password, String fName, String nName) {
+            private boolean checkInput(String email, String password, String fName, String lName, String phone, String age) {
 
                 if (!ValidatorActivity.isEmailValid(email)) {
                     Log.e(TAG, "checkInput: Invalid email address");
@@ -113,37 +119,58 @@ public class RegisterActivity extends AppCompatActivity {
                 }
 
                 if (!ValidatorActivity.isNameValid(fName)) {
-                    Log.e(TAG, "checkInput: First name must be at least 2 characters long");
+                    Log.e(TAG, "checkInput: First name must be at least 3 characters long");
                     /// show error message to user
-                    etUname.setError("User name must be at least  characters long");
+                    etFName.setError("First name must be at least 3 characters long");
                     /// set focus to first name field
+                    etFName.requestFocus();
                     return false;
                 }
 
-                if (!ValidatorActivity.isNameValid(nName)) {
+
+                if (!ValidatorActivity.isNameValid(lName)) {
                     Log.e(TAG, "checkInput: Last name must be at least 3 characters long");
                     /// show error message to user
-                    etUname.setError("User name must be at least 3 characters long");
+                    etLName.setError("Last name must be at least 3 characters long");
                     /// set focus to last name field
-                    etUname.requestFocus();
+                    etLName.requestFocus();
                     return false;
                 }
 
+                if (!ValidatorActivity.isPhoneValid(phone)) {
+                    Log.e(TAG, "checkInput: Phone number must be at least 10 characters long");
+                    /// show error message to user
+                    etPhone.setError("Phone number must be at least 10 characters long");
+                    /// set focus to phone field
+                    etPhone.requestFocus();
+                    return false;
+                }
+
+                if (!ValidatorActivity.isAgeValid(age)) {
+                    Log.e(TAG, "checkInput: Age must be 2 digit long");
+                    /// show error message to user
+                    etAge.setError("Phone number must be 2 digit long");
+                    /// set focus to phone field
+                    etAge.requestFocus();
+                    return false;
+                }
 
                 Log.d(TAG, "checkInput: Input is valid");
                 return true;
             }
 
             /// Register the user
-            private void registerUser(String email, String password, String fName, String nName) {
+            private void registerUser(String email, String password, String fName, String lName, String phone, String age) {
                 Log.d(TAG, "registerUser: Registering user...");
 
+                DatabaseService databaseService = DatabaseService.getInstance();
                 String uid = databaseService.generateUserId();
 
-                /// create a new user object
-                User user = new User(uid, email, fName ,nName, password, true);
 
-                databaseService.checkIfEmailExists(email, new DatabaseService.DatabaseCallback<>() {
+                /// create a new user object
+                User user = new User(uid, fName, lName, email, password, false, phone, age);
+
+                databaseService.checkIfEmailExists(email, new DatabaseService.DatabaseCallback<Boolean>() {
                     @Override
                     public void onCompleted(Boolean exists) {
                         if (exists) {
@@ -166,6 +193,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
 
             private void createUserInDatabase(User user) {
+                DatabaseService databaseService = DatabaseService.getInstance();
                 databaseService.createNewUser(user, new DatabaseService.DatabaseCallback<Void>() {
                     @Override
                     public void onCompleted(Void object) {

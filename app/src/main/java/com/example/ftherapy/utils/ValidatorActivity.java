@@ -39,4 +39,8 @@ public class ValidatorActivity {
     public static boolean isNameValid(@Nullable String name) {
         return name != null && name.length() >= 2;
     }
+
+    public static boolean isAgeValid(@Nullable String age) {
+        return age != null && age.length() >= 2;
+    }
 }

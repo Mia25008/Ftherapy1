@@ -2,11 +2,14 @@ package com.example.ftherapy.models;
 
 public class User {
     public String id;
-    public String userName;
+    public String firstName;
+    public String lastName;
     public String email;
     public String password;
     public Boolean isAdmin;
-    public Integer age;
+    public String phone;
+    public String age;
+
 
     public String getId() {
         return id;
@@ -16,12 +19,20 @@ public class User {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -47,21 +58,30 @@ public class User {
     public void setAdmin(Boolean admin) {
         isAdmin = admin;
     }
+    public String getPhone() {
+        return phone;
+    }
 
-    public Integer getAge() {
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
-    public User(String id, String userName, String email, String password, Boolean isAdmin, Integer age) {
+    public User(String id, String firstName, String lastName, String email, String password, Boolean isAdmin,String phone, String age) {
         this.id = id;
-        this.userName = userName;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.isAdmin = isAdmin;
+        this.phone = phone;
         this.age = age;
     }
 
