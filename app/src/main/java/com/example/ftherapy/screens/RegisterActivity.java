@@ -23,10 +23,12 @@ import com.example.ftherapy.utils.ValidatorActivity;
 
 public class RegisterActivity extends AppCompatActivity {
 
+    private static final String TAG = "RegisterActivity";
+
     Button toLog;
     Button toMain;
 
-    private EditText etEmail, etPassword, etUname, etPhone, etAge;
+    private EditText etEmail, etPassword, etFName, etLName, etPhone, etAge;
     private Button btnRegister;
     private TextView tvLogin;
 
@@ -42,8 +44,8 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
         /// get the views
-        etUname = findViewById(R.id.name_register);
-        etEmail = findViewById(R.id.email_register);
+        etFName = findViewById(R.id.first_name_register);
+        etLName = findViewById(R.id.last_name_register);        etEmail = findViewById(R.id.email_register);
         etPassword = findViewById(R.id.password_register);
         etPhone = findViewById(R.id.phone_register);
         etAge = findViewById(R.id.age_register);
@@ -56,7 +58,7 @@ public class RegisterActivity extends AppCompatActivity {
                     Log.d(TAG, "onClick: Register button clicked");
 
                     /// get the input from the user
-                    String uName = etUname.getText().toString();
+                    String uName = etFname.getText().toString();
                     String password = etPassword.getText().toString();
                     String email = etEmail.getText().toString();
                     String phone = etPhone.getText().toString();
@@ -72,7 +74,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                     /// Validate input
                     Log.d(TAG, "onClick: Validating input...");
-                    if (!checkInput(uName, password, email, phone, age)) {
+                    if (!checkInput(etFname, password, email, phone, age)) {
                         /// stop if input is invalid
                         return;
                     }
@@ -80,7 +82,7 @@ public class RegisterActivity extends AppCompatActivity {
                     Log.d(TAG, "onClick: Registering user...");
 
                     /// Register user
-                    registerUser(uName, password, email, phone, age);
+                    registerUser(etFname, password, email, phone, age);
                 } else if (v.getId() == tvLogin.getId()) {
                     /// Navigate back to Login Activity
                     finish();
@@ -111,9 +113,9 @@ public class RegisterActivity extends AppCompatActivity {
                 }
 
                 if (!ValidatorActivity.isNameValid(fName)) {
-                    Log.e(TAG, "checkInput: First name must be at least 3 characters long");
+                    Log.e(TAG, "checkInput: First name must be at least 2 characters long");
                     /// show error message to user
-                    etUname.setError("User name must be at least 3 characters long");
+                    etUname.setError("User name must be at least  characters long");
                     /// set focus to first name field
                     return false;
                 }
