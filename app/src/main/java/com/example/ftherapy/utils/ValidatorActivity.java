@@ -14,7 +14,8 @@ public class ValidatorActivity {
     /// @return true if the email is valid, false otherwise
     /// @see Patterns#EMAIL_ADDRESS
     public static boolean isEmailValid(@Nullable String email) {
-        return email != null && Patterns.EMAIL_ADDRESS.matcher(email).matches();
+        if (email == null) return false;
+        return Patterns.EMAIL_ADDRESS.matcher(email.trim()).matches();
     }
 
     /// Check if the password is valid
