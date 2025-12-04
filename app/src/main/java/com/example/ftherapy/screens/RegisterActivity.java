@@ -25,11 +25,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     private static final String TAG = "RegisterActivity";
 
-    Button toLog;
-    Button toMain;
 
     private EditText etEmail, etPassword, etFName, etLName, etPhone, etAge;
-    private Button btnRegister;
+    private Button btnRegister, toLogFromReg;
     private TextView tvLogin;
 
     @Override
@@ -53,6 +51,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         btnRegister = findViewById(R.id.button_register_to_main);
         btnRegister.setOnClickListener(this);
+        toLogFromReg = findViewById(R.id.button_register_to_login);
+        toLogFromReg.setOnClickListener(this);
+
 
     }
 
@@ -88,6 +89,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             Log.d(TAG, "onClick: Registering user...");
 
             /// Register email, password, fName, lName, phone, age);
+            registerUser(email, password, fName, lName, phone, age);
         } else if (v.getId() == tvLogin.getId()) {
             /// Navigate back to Login Activity
             finish();
@@ -214,6 +216,21 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 Toast.makeText(RegisterActivity.this, "Failed to register user", Toast.LENGTH_SHORT).show();
                 /// sign out the user if failed to register
                 SharedPreferencesUtil.signOutUser(RegisterActivity.this);
+            }
+        });
+
+        toLogFromReg.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnRegister.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }
