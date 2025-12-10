@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,13 +19,14 @@ import com.example.ftherapy.models.User;
 import com.example.ftherapy.services.DatabaseService;
 import com.example.ftherapy.utils.SharedPreferencesUtil;
 import com.example.ftherapy.utils.ValidatorActivity;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "RegisterActivity";
 
 
-    private EditText etEmail, etPassword, etFName, etLName, etPhone, etAge;
+    private TextInputEditText etEmail, etPassword, etFName, etLName, etPhone, etAge;
     private Button btnRegister, toLogFromReg;
     private TextView tvLogin;
 

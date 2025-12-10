@@ -12,13 +12,12 @@
         android:id="@+id/button_register_to_login"
         android:layout_width="160dp"
         android:layout_height="37dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginTop="3dp"
         android:backgroundTint="#FDEBE9"
         android:fontFamily="@font/rubik_semibold"
         android:text="יש חשבון? הכנסו"
         android:textColor="#66000000"
         android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,109 +47,69 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-    <EditText
-        android:id="@+id/last_name_register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#66000000"
-        android:ems="10"
-        android:fontFamily="@font/rubik"
-        android:inputType="text"
-        android:text="שם משפחה"
-        android:textColor="#80000000"
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="344dp"
+        android:layout_height="445dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/first_name_register" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_register"
+        app:layout_constraintVertical_bias="0.0">
 
 
-    <EditText
-        android:id="@+id/first_name_register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#66000000"
-        android:ems="10"
-        android:fontFamily="@font/rubik"
-        android:inputType="text"
-        android:text="שם פרטי"
-        android:textColor="#80000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_register" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/first_name_register"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:hint="שם פרטי" />
 
-    <EditText
-        android:id="@+id/email_register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#66000000"
-        android:ems="10"
-        android:fontFamily="@font/rubik"
-        android:inputType="textEmailAddress"
-        android:text="אימייל"
-        android:textColor="#80000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_register" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/last_name_register"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:hint="שם משפחה" />
 
-    <EditText
-        android:id="@+id/phone_register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#66000000"
-        android:ems="10"
-        android:fontFamily="@font/rubik"
-        android:gravity="right"
-        android:inputType="phone"
-        android:text="טלפון"
-        android:textColor="#80000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email_register" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password_register"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:hint="סיסמה" />
 
-    <EditText
-        android:id="@+id/age_register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#66000000"
-        android:ems="10"
-        android:fontFamily="@font/rubik"
-        android:inputType="number"
-        android:text="גיל"
-        android:textColor="#80000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phone_register" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email_register"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:hint="אימייל" />
 
-    <EditText
-        android:id="@+id/password_register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#66000000"
-        android:ems="10"
-        android:fontFamily="@font/rubik"
-        android:inputType="text"
-        android:text="סיסמה"
-        android:textColor="#80000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/last_name_register" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/phone_register"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:hint="טלפון" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/age_register"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:hint="גיל" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/button_register_to_main"
         android:layout_width="219dp"
         android:layout_height="46dp"
-        android:layout_marginTop="16dp"
         android:backgroundTint="#f1d4ce"
         android:fontFamily="@font/rubik_semibold"
         android:text="הרשמה"
         android:textColor="#66000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/age_register" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

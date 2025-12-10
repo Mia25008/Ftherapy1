@@ -25,7 +25,7 @@ import com.example.ftherapy.utils.ValidatorActivity;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button toRegFromLog;
-    Button toMainFromLog;
+
 
     private static final String TAG = "LoginActivity";
 
@@ -66,6 +66,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 startActivity(intent);
             }
         });
+
     }
 
     public void onClick(View v) {
@@ -127,55 +128,25 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void loginUser(String email, String password) {
-        Log.d(TAG, "loginUser: Starting login process...");
-
         databaseService.getUserByEmailAndPassword(email, password, new DatabaseService.DatabaseCallback<User>() {
+            /// Callback method called when the operation is completed
+            /// @param user the user object that is logged in
             @Override
             public void onCompleted(User user) {
-                Log.d(TAG, "onCompleted: Callback received - SUCCESS");
-
-                if (user == null) {
-                    Log.e(TAG, "onCompleted: User object is null!");
-                    runOnUiThread(() -> {
-                        Toast.makeText(LoginActivity.this, "Error: User not found", Toast.LENGTH_SHORT).show();
-                        etPassword.setError("Invalid email or password");
-                        etPassword.requestFocus();
-                    });
-                    return;
-                }
-
                 Log.d(TAG, "onCompleted: User logged in: " + user.toString());
-
-                // Save user data to SharedPreferences
+                /// save the user data to shared preferences
                 SharedPreferencesUtil.saveUser(LoginActivity.this, user);
-                Log.d(TAG, "onCompleted: User saved to SharedPreferences");
-
-                // Show success message
-                runOnUiThread(() -> {
-                    Toast.makeText(LoginActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
-                });
-
-                // Navigate to MainActivity
-                Log.d(TAG, "onCompleted: Navigating to MainActivity...");
+                /// Redirect to main activity and clear back stack to prevent user from going back to login screen
                 Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
+                /// Clear the back stack (clear history) and start the MainActivity
                 mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(mainIntent);
-                finish(); // Close LoginActivity
-
-                Log.d(TAG, "onCompleted: Navigation completed");
             }
 
             @Override
             public void onFailed(Exception e) {
                 Log.e(TAG, "onFailed: Callback received - FAILED");
                 Log.e(TAG, "onFailed: Failed to retrieve user data", e);
-
-                // Show error message to user
-                runOnUiThread(() -> {
-                    Toast.makeText(LoginActivity.this, "Invalid email or password", Toast.LENGTH_SHORT).show();
-                    etPassword.setError("Invalid email or password");
-                    etPassword.requestFocus();
-                });
 
                 // Sign out user if failed
                 SharedPreferencesUtil.signOutUser(LoginActivity.this);

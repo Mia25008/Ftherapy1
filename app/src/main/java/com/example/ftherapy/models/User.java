@@ -10,6 +10,8 @@ public class User {
     public String phone;
     public String age;
 
+    public User() {
+    }
 
     public String getId() {
         return id;
