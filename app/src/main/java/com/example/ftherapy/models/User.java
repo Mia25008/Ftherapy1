@@ -90,4 +90,13 @@ public class User {
     public User(String id) {
         this.id = id;
     }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
+    }
+
 }

@@ -6,4 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FDEBE9"
-    tools:context=".screens.MainActivity" />
+    tools:context=".screens.MainActivity" >
+
+    <Button
+        android:id="@+id/button_main_to_update"
+        android:layout_width="219dp"
+        android:layout_height="46dp"
+        android:backgroundTint="#f1d4ce"
+        android:fontFamily="@font/rubik_semibold"
+        android:text="עדכון פרטים"
+        android:textColor="#66000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
