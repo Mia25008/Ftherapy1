@@ -1,6 +1,9 @@
 package com.example.ftherapy.screens;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 
 import androidx.activity.EdgeToEdge;
@@ -14,6 +17,7 @@ import com.example.ftherapy.R;
 
 public class MainActivity extends AppCompatActivity {
 
+    Button userUpdate;
 
 
     @Override
@@ -27,7 +31,15 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        userUpdate = findViewById(R.id.button_main_to_update);
 
+        userUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, UpdateUserActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }

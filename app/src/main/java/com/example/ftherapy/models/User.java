@@ -1,16 +1,31 @@
 package com.example.ftherapy.models;
 
+import androidx.annotation.NonNull;
+
 public class User {
     public String id;
     public String firstName;
     public String lastName;
     public String email;
     public String password;
-    public Boolean isAdmin;
+    public boolean admin;
     public String phone;
     public String age;
 
     public User() {
+    }
+
+    public User(String id, String firstName, String lastName,
+                String email, String password, boolean admin,
+                String phone, String age) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.admin = admin;
+        this.phone = phone;
+        this.age = age;
     }
 
     public String getId() {
@@ -53,13 +68,14 @@ public class User {
         this.password = password;
     }
 
-    public Boolean getAdmin() {
-        return isAdmin;
+    public boolean isAdmin() {
+        return admin;
     }
 
-    public void setAdmin(Boolean admin) {
-        isAdmin = admin;
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
+
     public String getPhone() {
         return phone;
     }
@@ -76,27 +92,18 @@ public class User {
         this.age = age;
     }
 
-    public User(String id, String firstName, String lastName, String email, String password, Boolean isAdmin,String phone, String age) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
-        this.isAdmin = isAdmin;
-        this.phone = phone;
-        this.age = age;
+    @NonNull
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", admin=" + admin +
+                ", phone='" + phone + '\'' +
+                ", age='" + age + '\'' +
+                '}';
     }
-
-    public User(String id) {
-        this.id = id;
-    }
-
-    public boolean isAdmin() {
-        return isAdmin;
-    }
-
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
-    }
-
 }
