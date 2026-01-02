@@ -21,7 +21,7 @@ import com.example.ftherapy.services.DatabaseService;
 import com.example.ftherapy.utils.SharedPreferencesUtil;
 import com.example.ftherapy.utils.ValidatorActivity;
 
-public class UpdateUserActivity extends BaseActivity implements View.OnClickListener {
+public class UserProfileActivity extends BaseActivity implements View.OnClickListener {
 
     private static final String TAG = "UserProfileActivity";
 
@@ -53,7 +53,7 @@ public class UpdateUserActivity extends BaseActivity implements View.OnClickList
             selectedUid = currentUser.getId();
         }
         isCurrentUser = selectedUid.equals(currentUser.getId());
-        if (!currentUser.isAdmin()) {
+        if (!currentUser.isAdmin() && !isCurrentUser) {
             // If the user is not an admin and the selected user is not the current user
             // then finish the activity
             Toast.makeText(this, "You are not authorized to view this profile", Toast.LENGTH_SHORT).show();
@@ -67,10 +67,12 @@ public class UpdateUserActivity extends BaseActivity implements View.OnClickList
         etUserFirstName = findViewById(R.id.et_user_first_name);
         etUserLastName = findViewById(R.id.et_user_last_name);
         etUserEmail = findViewById(R.id.et_user_email);
+        etUserPhone = findViewById(R.id.et_user_phone);
         etUserPassword = findViewById(R.id.et_user_password);
         tvUserDisplayName = findViewById(R.id.tv_user_display_name);
         tvUserDisplayEmail = findViewById(R.id.tv_user_display_email);
         btnUpdateProfile = findViewById(R.id.btn_edit_profile);
+        btnSignOut = findViewById(R.id.btn_sign_out);
         adminBadge = findViewById(R.id.admin_badge);
 
         btnUpdateProfile.setOnClickListener(this);
@@ -90,6 +92,9 @@ public class UpdateUserActivity extends BaseActivity implements View.OnClickList
             updateUserProfile();
             return;
         }
+        if(v.getId() == R.id.btn_sign_out) {
+            signOut();
+        }
     }
 
     private void showUserProfile() {
@@ -102,6 +107,7 @@ public class UpdateUserActivity extends BaseActivity implements View.OnClickList
                 etUserFirstName.setText(user.getFirstName());
                 etUserLastName.setText(user.getLastName());
                 etUserEmail.setText(user.getEmail());
+                etUserPhone.setText(user.getPhone());
                 etUserPassword.setText(user.getPassword());
 
                 // Update display fields
@@ -145,9 +151,9 @@ public class UpdateUserActivity extends BaseActivity implements View.OnClickList
         // Get the updated user data from the EditText fields
         String firstName = etUserFirstName.getText().toString();
         String lastName = etUserLastName.getText().toString();
+        String phone = etUserPhone.getText().toString();
         String email = etUserEmail.getText().toString();
         String password = etUserPassword.getText().toString();
-        String phone = etUserPhone.getText().toString();
 
         if (!isValid(firstName, lastName, phone, email, password)) {
             Log.e(TAG, "Invalid input");
@@ -157,6 +163,7 @@ public class UpdateUserActivity extends BaseActivity implements View.OnClickList
         // Update the user object
         selectedUser.setFirstName(firstName);
         selectedUser.setLastName(lastName);
+        selectedUser.setPhone(phone);
         selectedUser.setEmail(email);
         selectedUser.setPassword(password);
 
@@ -189,14 +196,14 @@ public class UpdateUserActivity extends BaseActivity implements View.OnClickList
             @Override
             public void onCompleted(Void result) {
                 Log.d(TAG, "User profile updated successfully");
-                Toast.makeText(UpdateUserActivity.this, "Profile updated successfully", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UserProfileActivity.this, "Profile updated successfully", Toast.LENGTH_SHORT).show();
                 showUserProfile(); // Refresh the profile view
             }
 
             @Override
             public void onFailed(Exception e) {
                 Log.e(TAG, "Error updating user profile", e);
-                Toast.makeText(UpdateUserActivity.this, "Failed to update profile", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UserProfileActivity.this, "Failed to update profile", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -210,6 +217,11 @@ public class UpdateUserActivity extends BaseActivity implements View.OnClickList
         if (!ValidatorActivity.isNameValid(lastName)) {
             etUserLastName.setError("Last name is required");
             etUserLastName.requestFocus();
+            return false;
+        }
+        if (!ValidatorActivity.isPhoneValid(phone)) {
+            etUserPhone.setError("Phone number is required");
+            etUserPhone.requestFocus();
             return false;
         }
         if (!ValidatorActivity.isEmailValid(email)) {
@@ -227,10 +239,10 @@ public class UpdateUserActivity extends BaseActivity implements View.OnClickList
 
     private void signOut() {
         Log.d(TAG, "Sign out button clicked");
-        SharedPreferencesUtil.signOutUser(UpdateUserActivity.this);
+        SharedPreferencesUtil.signOutUser(UserProfileActivity.this);
 
         Log.d(TAG, "User signed out, redirecting to LandingActivity");
-        Intent landingIntent = new Intent(UpdateUserActivity.this, LandingActivity.class);
+        Intent landingIntent = new Intent(UserProfileActivity.this, LandingActivity.class);
         landingIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(landingIntent);
     }

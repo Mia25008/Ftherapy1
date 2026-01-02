@@ -106,4 +106,13 @@ public class User {
                 ", age='" + age + '\'' +
                 '}';
     }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
+
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
 }

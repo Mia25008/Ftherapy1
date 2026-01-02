@@ -12,6 +12,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.ftherapy.R;
+import com.example.ftherapy.utils.SharedPreferencesUtil;
 
 public class LandingActivity extends AppCompatActivity {
 
@@ -28,6 +29,13 @@ public class LandingActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        if(SharedPreferencesUtil.isUserLoggedIn(this)){
+            Intent intent = new Intent(LandingActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+            return;
+        }
 
         toReg = findViewById(R.id.button_landing_go_to_register);
         toLog = findViewById(R.id.button_landing_go_to_login);
