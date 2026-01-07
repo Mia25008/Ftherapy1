@@ -19,7 +19,7 @@ import com.example.ftherapy.R;
 import com.example.ftherapy.models.User;
 import com.example.ftherapy.services.DatabaseService;
 import com.example.ftherapy.utils.SharedPreferencesUtil;
-import com.example.ftherapy.utils.ValidatorActivity;
+import com.example.ftherapy.utils.Validator;
 
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
@@ -106,7 +106,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     // Method to check if input is valid
     private boolean checkInput(String email, String password) {
-        if (!ValidatorActivity.isEmailValid(email)) {
+        if (!Validator.isEmailValid(email)) {
             Log.e(TAG, "checkInput: Invalid email address");
             // Show error message to user
             etEmail.setError("Invalid email address");
@@ -115,7 +115,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             return false;
         }
 
-        if (!ValidatorActivity.isPasswordValid(password)) {
+        if (!Validator.isPasswordValid(password)) {
             Log.e(TAG, "checkInput: Invalid password");
             // Show error message to user
             etPassword.setError("Password must be at least 6 characters long");

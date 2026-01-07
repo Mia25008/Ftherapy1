@@ -7,7 +7,7 @@ import androidx.annotation.Nullable;
 /// Validator class to validate user input.
 /// This class contains static methods to validate user input,
 /// like email, password, phone, name etc.
-public class ValidatorActivity {
+public class Validator {
 
     /// Check if the email is valid
     /// @param email email to validate

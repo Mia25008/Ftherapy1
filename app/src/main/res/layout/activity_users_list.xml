@@ -21,7 +21,7 @@
             android:background="#E2C5BF"
             app:navigationIcon="?attr/homeAsUpIndicator"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:title="כל המשתמשים" />
+            app:title="משתמשים" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

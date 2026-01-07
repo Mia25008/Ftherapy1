@@ -18,7 +18,7 @@ import com.example.ftherapy.R;
 import com.example.ftherapy.models.User;
 import com.example.ftherapy.services.DatabaseService;
 import com.example.ftherapy.utils.SharedPreferencesUtil;
-import com.example.ftherapy.utils.ValidatorActivity;
+import com.example.ftherapy.utils.Validator;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
@@ -101,7 +101,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     /// @see Validator
     private boolean checkInput(String email, String password, String fName, String lName, String phone, String age) {
 
-        if (!ValidatorActivity.isEmailValid(email)) {
+        if (!Validator.isEmailValid(email)) {
             Log.e(TAG, "checkInput: Invalid email address");
             /// show error message to user
             etEmail.setError("Invalid email address");
@@ -110,7 +110,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             return false;
         }
 
-        if (!ValidatorActivity.isPasswordValid(password)) {
+        if (!Validator.isPasswordValid(password)) {
             Log.e(TAG, "checkInput: Password must be at least 6 characters long");
             /// show error message to user
             etPassword.setError("Password must be at least 6 characters long");
@@ -119,7 +119,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             return false;
         }
 
-        if (!ValidatorActivity.isNameValid(fName)) {
+        if (!Validator.isNameValid(fName)) {
             Log.e(TAG, "checkInput: First name must be at least 3 characters long");
             /// show error message to user
             etFName.setError("First name must be at least 3 characters long");
@@ -129,7 +129,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
 
 
-        if (!ValidatorActivity.isNameValid(lName)) {
+        if (!Validator.isNameValid(lName)) {
             Log.e(TAG, "checkInput: Last name must be at least 3 characters long");
             /// show error message to user
             etLName.setError("Last name must be at least 3 characters long");
@@ -138,7 +138,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             return false;
         }
 
-        if (!ValidatorActivity.isPhoneValid(phone)) {
+        if (!Validator.isPhoneValid(phone)) {
             Log.e(TAG, "checkInput: Phone number must be at least 10 characters long");
             /// show error message to user
             etPhone.setError("Phone number must be at least 10 characters long");
@@ -147,7 +147,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             return false;
         }
 
-        if (!ValidatorActivity.isAgeValid(age)) {
+        if (!Validator.isAgeValid(age)) {
             Log.e(TAG, "checkInput: Age must be 2 digit long");
             /// show error message to user
             etAge.setError("Phone number must be 2 digit long");

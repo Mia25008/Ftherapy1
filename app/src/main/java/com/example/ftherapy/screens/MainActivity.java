@@ -13,12 +13,18 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.ftherapy.R;
+import com.example.ftherapy.models.User;
+import com.example.ftherapy.services.DatabaseService;
 import com.example.ftherapy.utils.SharedPreferencesUtil;
 
 
 public class MainActivity extends AppCompatActivity {
 
     Button userUpdate, btn_logout, btn_ulist;
+    private DatabaseService databaseService;
+    User selectedUser;
+    String selectedUserid;
+    boolean isCurrentUser = false;
 
 
     @Override
@@ -34,7 +40,23 @@ public class MainActivity extends AppCompatActivity {
 
         userUpdate = findViewById(R.id.button_main_to_update);
         btn_logout = findViewById(R.id.button_main_logout);
+
+        selectedUserid = getIntent().getStringExtra("USER_UID");
+        User currentUser = SharedPreferencesUtil.getUser(this);
+        assert currentUser != null;
+
+        if (btn_ulist == null) {
+            selectedUserid = currentUser.getId();
+        }
+        isCurrentUser = selectedUserid.equals(currentUser.getId());
         btn_ulist  = findViewById(R.id.button_main_to_Ulist);
+
+        if(currentUser.admin){
+            btn_ulist.setVisibility(View.VISIBLE);
+        } else {
+            btn_ulist.setVisibility(View.GONE);
+        }
+
         userUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

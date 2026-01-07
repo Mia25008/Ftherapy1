@@ -13,22 +13,10 @@
         android:theme="@style/Theme.Ftherapy"
         tools:targetApi="31">
         <activity
-            android:name=".adapters.UserAdapterActivity"
-            android:exported="false" />
-        <activity
-            android:name=".screens.UserListActivity"
-            android:exported="false" />
-        <activity
-            android:name=".screens.BaseActivity"
-            android:exported="false" />
-        <activity
             android:name=".screens.UserProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".screens.testLogActivity"
-            android:exported="false" />
-        <activity
-            android:name=".utils.ValidatorActivity"
+            android:name=".screens.UsersListActivity"
             android:exported="false" />
         <activity
             android:name=".screens.MainActivity"

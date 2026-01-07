@@ -19,7 +19,7 @@ import com.example.ftherapy.R;
 import com.example.ftherapy.models.User;
 import com.example.ftherapy.services.DatabaseService;
 import com.example.ftherapy.utils.SharedPreferencesUtil;
-import com.example.ftherapy.utils.ValidatorActivity;
+import com.example.ftherapy.utils.Validator;
 
 public class UserProfileActivity extends BaseActivity implements View.OnClickListener {
 
@@ -209,27 +209,27 @@ public class UserProfileActivity extends BaseActivity implements View.OnClickLis
     }
 
     private boolean isValid(String firstName, String lastName, String phone, String email, String password) {
-        if (!ValidatorActivity.isNameValid(firstName)) {
+        if (!Validator.isNameValid(firstName)) {
             etUserFirstName.setError("First name is required");
             etUserFirstName.requestFocus();
             return false;
         }
-        if (!ValidatorActivity.isNameValid(lastName)) {
+        if (!Validator.isNameValid(lastName)) {
             etUserLastName.setError("Last name is required");
             etUserLastName.requestFocus();
             return false;
         }
-        if (!ValidatorActivity.isPhoneValid(phone)) {
+        if (!Validator.isPhoneValid(phone)) {
             etUserPhone.setError("Phone number is required");
             etUserPhone.requestFocus();
             return false;
         }
-        if (!ValidatorActivity.isEmailValid(email)) {
+        if (!Validator.isEmailValid(email)) {
             etUserEmail.setError("Email is required");
             etUserEmail.requestFocus();
             return false;
         }
-        if (!ValidatorActivity.isPasswordValid(password)) {
+        if (!Validator.isPasswordValid(password)) {
             etUserPassword.setError("Password is required");
             etUserPassword.requestFocus();
             return false;
