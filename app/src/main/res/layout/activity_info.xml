@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FDEBE9"
+    tools:context=".screens.InfoActivity">
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/tv_info_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="126dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="125dp"
+        android:layout_marginBottom="560dp"
+        android:fontFamily="@font/rubik_semibold"
+        android:text=" שיטות טיפול בקליניקה"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+
+    <ScrollView
+        android:layout_width="362dp"
+        android:layout_height="470dp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="363dp"
+            android:layout_height="516dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_info_title">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <TextView
+                android:fontFamily="@font/rubik_semibold"
+                android:id="@+id/tv_info_reiki"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:text="רייקי"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_info_reiki2"
+                android:fontFamily="@font/rubik"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="רייקי היא שיטת טיפול אנרגטית שמטרתה לאזן את הגוף והנפש באמצעות העברת אנרגיה עדינה, לרוב דרך הנחת ידיים. כאשר משלבים רייקי עם סאונד הילינג, נעשה שימוש בצלילים ותדרים כמו קערות טיבטיות, פעמונים או מוזיקה מרגיעה, המסייעים לה להעמיק את תחושת הרוגע והאיזון. השילוב בין אנרגיה וצליל נועד לעודד אצלה שחרור מתחים, חיבור פנימי והרמוניה כללית." />
+
+            <TextView
+                android:fontFamily="@font/rubik_semibold"
+                android:id="@+id/tv_info_essential_oils"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:text="שמנים אתרים"
+                android:textSize="16sp" />
+
+            <TextView
+                android:fontFamily="@font/rubik"
+                android:id="@+id/tv_info_essential_oils2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="שמנים אתריים הם תמציות טבעיות המופקות מצמחים, פרחים ועצים, ומשמשים בתחום הארומתרפיה. לכל שמן מיוחס ריח והשפעה ייחודיים, כמו הרגעה, רענון או חיזוק תחושת איזון. השימוש נעשה לרוב באמצעות הרחה, עיסוי מדולל או פיזור באוויר, והמטרה היא לתמוך ברווחתה הרגשית והנפשית בצורה טבעית ועדינה." />
+
+            <TextView
+                android:fontFamily="@font/rubik_semibold"
+                android:id="@+id/tv_info_holistic_training"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:text="אימון הוליסטי"
+                android:textSize="16sp" />
+
+            <TextView
+                android:fontFamily="@font/rubik"
+                android:id="@+id/tv_info_holistic_training2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="אימון הוליסטי הוא גישה המסתכלת על האדם כמכלול של גוף, נפש, רגש ותודעה. האימון משלב שיחות, הצבת מטרות, כלים להקשבה פנימית ופיתוח מודעות עצמית. מטרתו היא לעזור לה להבין את עצמה טוב יותר, לחזק תחושת מסוגלות וליצור שינוי חיובי באורח החיים מתוך חיבור לערכים ולצרכים האישיים שלה." />
+
+            <TextView
+                android:fontFamily="@font/rubik_semibold"
+                android:id="@+id/tv_info_emr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:paddingTop="8dp"
+                android:text="EMR"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_info_emr2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rubik"
+                android:gravity="right"
+                android:text="EMR היא שיטה רגשית־אנרגטית המתמקדת בזיהוי ושחרור של זיכרונות או רגשות מעכבים שנשמרו בגוף ובתודעה. באמצעות שיחה, תשומת לב לתחושות פנימיות וטכניקות מיקוד, היא לומדת לעבד חוויות מהעבר בצורה בטוחה ומודעת. מטרת השיטה היא לאפשר לה הקלה רגשית, חיזוק תחושת שקט פנימי ויצירת מקום לתחושות חיוביות יותר." />
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
