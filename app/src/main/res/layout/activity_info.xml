@@ -69,9 +69,9 @@
 
             <TextView
                 android:id="@+id/tv_info_reiki2"
-                android:fontFamily="@font/rubik"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="129dp"
+                android:fontFamily="@font/rubik"
                 android:text="רייקי היא שיטת טיפול אנרגטית שמטרתה לאזן את הגוף והנפש באמצעות העברת אנרגיה עדינה, לרוב דרך הנחת ידיים. כאשר משלבים רייקי עם סאונד הילינג, נעשה שימוש בצלילים ותדרים כמו קערות טיבטיות, פעמונים או מוזיקה מרגיעה, המסייעים לה להעמיק את תחושת הרוגע והאיזון. השילוב בין אנרגיה וצליל נועד לעודד אצלה שחרור מתחים, חיבור פנימי והרמוניה כללית." />
 
             <TextView
@@ -84,10 +84,10 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:fontFamily="@font/rubik"
                 android:id="@+id/tv_info_essential_oils2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="117dp"
+                android:fontFamily="@font/rubik"
                 android:text="שמנים אתריים הם תמציות טבעיות המופקות מצמחים, פרחים ועצים, ומשמשים בתחום הארומתרפיה. לכל שמן מיוחס ריח והשפעה ייחודיים, כמו הרגעה, רענון או חיזוק תחושת איזון. השימוש נעשה לרוב באמצעות הרחה, עיסוי מדולל או פיזור באוויר, והמטרה היא לתמוך ברווחתה הרגשית והנפשית בצורה טבעית ועדינה." />
 
             <TextView
@@ -100,10 +100,10 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:fontFamily="@font/rubik"
                 android:id="@+id/tv_info_holistic_training2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="106dp"
+                android:fontFamily="@font/rubik"
                 android:text="אימון הוליסטי הוא גישה המסתכלת על האדם כמכלול של גוף, נפש, רגש ותודעה. האימון משלב שיחות, הצבת מטרות, כלים להקשבה פנימית ופיתוח מודעות עצמית. מטרתו היא לעזור לה להבין את עצמה טוב יותר, לחזק תחושת מסוגלות וליצור שינוי חיובי באורח החיים מתוך חיבור לערכים ולצרכים האישיים שלה." />
 
             <TextView
@@ -119,7 +119,7 @@
             <TextView
                 android:id="@+id/tv_info_emr2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="144dp"
                 android:fontFamily="@font/rubik"
                 android:gravity="right"
                 android:text="EMR היא שיטה רגשית־אנרגטית המתמקדת בזיהוי ושחרור של זיכרונות או רגשות מעכבים שנשמרו בגוף ובתודעה. באמצעות שיחה, תשומת לב לתחושות פנימיות וטכניקות מיקוד, היא לומדת לעבד חוויות מהעבר בצורה בטוחה ומודעת. מטרת השיטה היא לאפשר לה הקלה רגשית, חיזוק תחושת שקט פנימי ויצירת מקום לתחושות חיוביות יותר." />
