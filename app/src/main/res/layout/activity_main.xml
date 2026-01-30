@@ -37,6 +37,20 @@
         app:layout_constraintVertical_bias="0.405" />
 
     <Button
+        android:id="@+id/button_main_to_product"
+        android:layout_width="219dp"
+        android:layout_height="46dp"
+        android:backgroundTint="#f1d4ce"
+        android:fontFamily="@font/rubik_semibold"
+        android:text="קטלוג מוצרים"
+        android:textColor="#66000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_main_logout"
+        app:layout_constraintVertical_bias="0.07999998" />
+
+    <Button
         android:id="@+id/button_main_to_info"
         android:layout_width="219dp"
         android:layout_height="46dp"

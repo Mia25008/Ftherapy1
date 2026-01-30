@@ -1,9 +1,11 @@
-package com.example.ftherapy;
+package com.example.ftherapy.screens;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.ftherapy.R;
 import com.example.ftherapy.adapters.ProductAdapter;
 import com.example.ftherapy.models.Product;
 
@@ -21,9 +23,9 @@ public class CatalogActivity extends AppCompatActivity {
 
         List<Product> list = new ArrayList<>();
         // כאן את מוסיפה מוצרים עם תמונות מתיקיית ה-drawable שלך
-        list.add(new Product("טיפול פנים", R.drawable.face_care));
-        list.add(new Product("עיסוי אבנים חמות", R.drawable.massage));
-        list.add(new Product("רפלקסולוגיה", R.drawable.foot_care));
+        list.add(new Product("שמן לבנדר", R.drawable.lavend));
+        list.add(new Product("מבער", R.drawable.burner));
+        list.add(new Product("קרם פנים", R.drawable.cream));
 
         rv.setAdapter(new ProductAdapter(list));
     }

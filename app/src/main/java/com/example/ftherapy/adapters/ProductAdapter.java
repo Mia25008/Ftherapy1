@@ -1,5 +1,6 @@
 package com.example.ftherapy.adapters;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.ftherapy.R;
 import com.example.ftherapy.models.Product;
+import com.example.ftherapy.screens.ProductDetailActivity;
 
 import java.util.List;
 
@@ -32,6 +34,18 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         Product p = products.get(position);
         holder.name.setText(p.getName());
         holder.image.setImageResource(p.getImageRes());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), ProductDetailActivity.class);
+
+                intent.putExtra("product_name", p.getName());
+                intent.putExtra("product_image", p.getImageRes());
+
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -49,4 +63,5 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             image = itemView.findViewById(R.id.productImage);
         }
     }
+
 }

@@ -20,7 +20,7 @@ import com.example.ftherapy.utils.SharedPreferencesUtil;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button userUpdate, btn_logout, btn_ulist, btn_info;
+    Button userUpdate, btn_logout, btn_ulist, btn_info, btn_product;
     private DatabaseService databaseService;
     User selectedUser;
     String selectedUserid;
@@ -90,6 +90,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, InfoActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_product = findViewById(R.id.button_main_to_product);
+        btn_product.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, CatalogActivity.class);
                 startActivity(intent);
             }
         });
