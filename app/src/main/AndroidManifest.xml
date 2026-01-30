@@ -13,6 +13,18 @@
         android:theme="@style/Theme.Ftherapy"
         tools:targetApi="31">
         <activity
+            android:name=".ProductDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProductAdapterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.ProductCatalogActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.ItemActivity"
+            android:exported="false" />
+        <activity
             android:name=".screens.LandingActivity"
             android:exported="false" />
         <activity

@@ -21,7 +21,8 @@ import com.example.ftherapy.services.DatabaseService;
 import com.example.ftherapy.utils.SharedPreferencesUtil;
 import com.example.ftherapy.utils.Validator;
 
-public class UserProfileActivity extends BaseActivity implements View.OnClickListener {
+public class UserProfileActivity extends
+        BaseActivity implements View.OnClickListener {
 
     private static final String TAG = "UserProfileActivity";
 
@@ -196,19 +197,27 @@ public class UserProfileActivity extends BaseActivity implements View.OnClickLis
             @Override
             public void onCompleted(Void result) {
                 Log.d(TAG, "User profile updated successfully");
-                Toast.makeText(UserProfileActivity.this, "Profile updated successfully", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UserProfileActivity.this, "Profile updated successfully",
+                        Toast.LENGTH_SHORT).show();
                 showUserProfile(); // Refresh the profile view
             }
 
             @Override
             public void onFailed(Exception e) {
                 Log.e(TAG, "Error updating user profile", e);
-                Toast.makeText(UserProfileActivity.this, "Failed to update profile", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UserProfileActivity.this, "Failed to update profile",
+                        Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    private boolean isValid(String firstName, String lastName, String phone, String email, String password) {
+    private boolean isValid(String firstName, String lastName, String phone,
+                            String email, String password) {
+        if (!Validator.isEmailValid(email)) {
+            etUserEmail.setError("Email is required");
+            etUserEmail.requestFocus();
+            return false;
+        }
         if (!Validator.isNameValid(firstName)) {
             etUserFirstName.setError("First name is required");
             etUserFirstName.requestFocus();
@@ -224,11 +233,7 @@ public class UserProfileActivity extends BaseActivity implements View.OnClickLis
             etUserPhone.requestFocus();
             return false;
         }
-        if (!Validator.isEmailValid(email)) {
-            etUserEmail.setError("Email is required");
-            etUserEmail.requestFocus();
-            return false;
-        }
+
         if (!Validator.isPasswordValid(password)) {
             etUserPassword.setError("Password is required");
             etUserPassword.requestFocus();

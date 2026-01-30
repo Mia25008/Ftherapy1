@@ -99,7 +99,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     /// Check if the input is valid
     /// @return true if the input is valid, false otherwise
     /// @see Validator
-    private boolean checkInput(String email, String password, String fName, String lName, String phone, String age) {
+    private boolean checkInput(String email, String password, String fName,
+                               String lName, String phone, String age) {
 
         if (!Validator.isEmailValid(email)) {
             Log.e(TAG, "checkInput: Invalid email address");
@@ -200,7 +201,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             public void onCompleted(Void object) {
                 Log.d(TAG, "createUserInDatabase: User created successfully");
                 /// save the user to shared preferences
+
                 SharedPreferencesUtil.saveUser(RegisterActivity.this, user);
+
+
                 Log.d(TAG, "createUserInDatabase: Redirecting to MainActivity");
                 /// Redirect to MainActivity and clear back stack to prevent user from going back to register screen
                 Intent mainIntent = new Intent(RegisterActivity.this, MainActivity.class);
