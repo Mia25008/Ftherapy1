@@ -110,6 +110,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#f1d4ce"
+                android:gravity="right"
                 android:orientation="vertical"
                 android:padding="24dp">
 
@@ -117,7 +118,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
-                    android:text="Personal Information"
+                    android:text="מידע אישי"
                     android:textColor="?attr/colorOnBackground"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -231,7 +232,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
-                    android:text="Security"
+                    android:text="אבטחה"
                     android:textColor="?attr/colorOnBackground"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -245,7 +246,7 @@
                     app:boxCornerRadiusBottomStart="12dp"
                     app:boxCornerRadiusTopEnd="12dp"
                     app:boxCornerRadiusTopStart="12dp"
-                    app:helperText="Leave blank to keep current password"
+                    app:helperText="השאר ריק כדי לשמור את הסיסמה הנוכחית"
                     app:passwordToggleEnabled="true"
                     app:startIconDrawable="@android:drawable/ic_lock_idle_lock">
 
@@ -287,7 +288,7 @@
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:text="Sign Out"
+            android:text="התנתקות"
             android:textAllCaps="false"
             android:textColor="?attr/colorError"
             app:cornerRadius="28dp"
@@ -307,7 +308,7 @@
             android:background="#E2C5BF"
             app:navigationIcon="?attr/homeAsUpIndicator"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:title="Update Profile" />
+            app:title="עדכון פרטים" />
     </com.google.android.material.appbar.AppBarLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

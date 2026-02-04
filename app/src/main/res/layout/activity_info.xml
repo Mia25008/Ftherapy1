@@ -171,6 +171,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/rubik_semibold"
+                        android:gravity="right"
                         android:text="EMR"
                         android:textColor="#8E736E"
                         android:textSize="18sp" />
@@ -180,6 +181,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:fontFamily="@font/rubik"
+                        android:gravity="right"
                         android:lineSpacingExtra="5sp"
                         android:text="EMR היא שיטה רגשית־אנרגטית המתמקדת בזיהוי ושחרור של זיכרונות או רגשות מעכבים שנשמרו בגוף ובתודעה. באמצעות שיחה, תשומת לב לתחושות פנימיות וטכניקות מיקוד, היא לומדת לעבד חוויות מהעבר בצורה בטוחה ומודעת. מטרת השיטה היא לאפשר לה הקלה רגשית, חיזוק תחושת שקט פנימי ויצירת מקום לתחושות חיוביות יותר."
                         android:textColor="#444444"

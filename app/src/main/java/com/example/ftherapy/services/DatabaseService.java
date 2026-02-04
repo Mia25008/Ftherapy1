@@ -33,7 +33,8 @@ public class DatabaseService {
 
     /// paths for different data types in the database
     /// @see DatabaseService#readData(String)
-    private static final String USERS_PATH = "users",
+    private static final String
+            USERS_PATH = "users",
             FOODS_PATH = "foods",
             CARTS_PATH = "carts";
 
