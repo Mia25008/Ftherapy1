@@ -34,9 +34,7 @@ public class DatabaseService {
     /// paths for different data types in the database
     /// @see DatabaseService#readData(String)
     private static final String
-            USERS_PATH = "users",
-            FOODS_PATH = "foods",
-            CARTS_PATH = "carts";
+            USERS_PATH = "users";
 
     /// callback interface for database operations
     /// @param <T> the type of the object to return

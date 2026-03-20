@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private EditText etEmail, etPassword;
     private Button btnLogin;
-    private TextView tvRegister;
+    private TextView tvLogin;
     DatabaseService databaseService;
 
 
@@ -52,12 +52,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         etEmail = findViewById(R.id.email_login);
         etPassword = findViewById(R.id.password_login);
         btnLogin = findViewById(R.id.button_login_to_main);
-        tvRegister = findViewById(R.id.textView_register);
+        tvLogin = findViewById(R.id.textView_login);
         toRegFromLog = findViewById(R.id.button_login_to_register);
 
         // Set up Listeners
         btnLogin.setOnClickListener(this);
-        tvRegister.setOnClickListener(this);
+        tvLogin.setOnClickListener(this);
 
         toRegFromLog.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,7 +97,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             // Login user
             loginUser(email, password);
-        } else if (v.getId() == tvRegister.getId()) {
+        } else if (v.getId() == tvLogin.getId()) {
             // Navigate to Register Activity
             Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
             startActivity(registerIntent);

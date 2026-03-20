@@ -1,5 +1,6 @@
 package com.example.ftherapy.screens;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -77,11 +78,40 @@ public class MainActivity extends AppCompatActivity {
         btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferencesUtil.signOutUser(MainActivity.this);
-                Intent intent = new Intent(MainActivity.this, LandingActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
+                View dialogView = getLayoutInflater().inflate(R.layout.activity_dialog_custom, null);
 
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setView(dialogView);
+
+                final AlertDialog alertDialog = builder.create();
+
+
+                Button btnConfirm = dialogView.findViewById(R.id.btn_confirm);
+                Button btnCancel = dialogView.findViewById(R.id.btn_cancel);
+
+                // כפתור אישור התנתקות
+                btnConfirm.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        SharedPreferencesUtil.signOutUser(MainActivity.this);
+                        Intent intent = new Intent(MainActivity.this, LandingActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                        finish();
+
+                        alertDialog.dismiss();
+                    }
+                });
+
+                // כפתור ביטול
+                btnCancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alertDialog.dismiss();
+                    }
+                });
+
+                alertDialog.show();
             }
         });
 
