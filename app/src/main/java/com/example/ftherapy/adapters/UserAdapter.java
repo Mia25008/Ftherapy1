@@ -16,7 +16,7 @@ import com.google.android.material.chip.Chip;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserAdapterActivity extends RecyclerView.Adapter<UserAdapterActivity.ViewHolder> {
+public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
 
     public interface OnUserClickListener {
@@ -26,14 +26,14 @@ public class UserAdapterActivity extends RecyclerView.Adapter<UserAdapterActivit
 
     private final List<User> userList;
     private final OnUserClickListener onUserClickListener;
-    public UserAdapterActivity(@Nullable final OnUserClickListener onUserClickListener) {
+    public UserAdapter(@Nullable final OnUserClickListener onUserClickListener) {
         userList = new ArrayList<>();
         this.onUserClickListener = onUserClickListener;
     }
 
     @NonNull
     @Override
-    public UserAdapterActivity.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public UserAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_user, parent, false);
         return new ViewHolder(view);
     }
@@ -121,5 +121,10 @@ public class UserAdapterActivity extends RecyclerView.Adapter<UserAdapterActivit
             tvInitials = itemView.findViewById(R.id.tv_user_initials);
             chipRole = itemView.findViewById(R.id.chip_user_role);
         }
+    }
+    public void filterList(ArrayList<User> filteredList) {
+        this.userList.clear();          // מרוקן את הרשימה הנוכחית
+        this.userList.addAll(filteredList); // מוסיף את כל האיברים מהרשימה המסוננת
+        notifyDataSetChanged();         // מעדכן את התצוגה
     }
 }

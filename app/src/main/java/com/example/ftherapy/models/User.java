@@ -11,6 +11,8 @@ public class User {
     public boolean admin;
     public String phone;
     public String age;
+    public String profileImageUrl;
+
 
     public User() {
     }
@@ -90,6 +92,14 @@ public class User {
 
     public void setAge(String age) {
         this.age = age;
+    }
+
+    public String getProfileImageUrl() {
+        return profileImageUrl;
+    }
+
+    public void setProfileImageUrl(String profileImageUrl) {
+        this.profileImageUrl = profileImageUrl;
     }
 
     @NonNull

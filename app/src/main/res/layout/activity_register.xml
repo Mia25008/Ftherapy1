@@ -87,7 +87,7 @@
                                 android:id="@+id/first_name_register"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:gravity="right"
+                                android:gravity="center"
                                 android:hint="שם פרטי"
                                 android:inputType="textPersonName" />
                         </com.google.android.material.textfield.TextInputLayout>
@@ -107,7 +107,7 @@
                                 android:id="@+id/last_name_register"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:gravity="right"
+                                android:gravity="center"
                                 android:hint="שם משפחה"
                                 android:inputType="textPersonName" />
                         </com.google.android.material.textfield.TextInputLayout>
@@ -128,7 +128,7 @@
                             android:id="@+id/email_register"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="right"
+                            android:gravity="center"
                             android:hint="אימייל"
                             android:inputType="textEmailAddress" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -149,7 +149,7 @@
                             android:id="@+id/password_register"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="right"
+                            android:gravity="center"
                             android:hint="סיסמה"
                             android:inputType="textPassword" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -175,7 +175,7 @@
                                 android:id="@+id/phone_register"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:gravity="right"
+                                android:gravity="center"
                                 android:hint="טלפון"
                                 android:inputType="phone" />
                         </com.google.android.material.textfield.TextInputLayout>

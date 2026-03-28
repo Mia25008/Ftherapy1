@@ -82,7 +82,7 @@
                             android:id="@+id/email_login"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="right"
+                            android:gravity="center"
                             android:hint="אימייל"
                             android:inputType="textEmailAddress" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -103,7 +103,7 @@
                             android:id="@+id/password_login"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="right"
+                            android:gravity="center"
                             android:hint="סיסמה"
                             android:inputType="textPassword" />
                     </com.google.android.material.textfield.TextInputLayout>

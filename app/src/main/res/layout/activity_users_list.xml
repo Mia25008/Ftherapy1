@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E2C5BF"
-    android:fontFamily="@font/rubik"
     tools:context=".screens.UsersListActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -42,7 +41,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/rubik"
                 android:text="ניהול משתמשים"
                 android:textColor="#baa09b"
                 android:textSize="24sp"
@@ -52,9 +52,21 @@
                 android:id="@+id/tv_user_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:fontFamily="@font/rubik"
                 android:text="סך כל המשתמשים: 0"
                 android:textColor="#baa09b"
                 android:textSize="14sp" />
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/search_view_users"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:elevation="2dp"
+                app:iconifiedByDefault="false"
+                app:queryHint="חפש לפי שם או אימייל..."
+                app:searchIcon="@android:drawable/ic_menu_search" />
 
         </LinearLayout>
 
@@ -89,28 +101,11 @@
                     android:orientation="vertical"
                     android:visibility="gone">
 
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_marginBottom="16dp"
-                        android:alpha="0.3"
-                        android:src="@android:drawable/ic_menu_my_calendar" />
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:text="No Users Found"
-                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:text="לא נמצאו משתמשים"
                         android:textSize="18sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Users will appear here"
-                        android:textColor="?attr/colorOnSurfaceVariant"
-                        android:textSize="14sp" />
-
                 </LinearLayout>
 
                 <ProgressBar

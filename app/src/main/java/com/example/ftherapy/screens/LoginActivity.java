@@ -93,7 +93,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             Log.d(TAG, "onClick: Logging in user...");
 
             // Show loading message
-            Toast.makeText(this, "Logging in...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "מתחבר", Toast.LENGTH_SHORT).show();
 
             // Login user
             loginUser(email, password);
@@ -129,26 +129,26 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void loginUser(String email, String password) {
         databaseService.getUserByEmailAndPassword(email, password, new DatabaseService.DatabaseCallback<User>() {
-            /// Callback method called when the operation is completed
-            /// @param user the user object that is logged in
             @Override
             public void onCompleted(User user) {
-                Log.d(TAG, "onCompleted: User logged in: " + user.toString());
-                /// save the user data to shared preferences
-                SharedPreferencesUtil.saveUser(LoginActivity.this, user);
-                /// Redirect to main activity and clear back stack to prevent user from going back to login screen
-                Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
-                /// Clear the back stack (clear history) and start the MainActivity
-                mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(mainIntent);
+                if (user != null) {
+                    Log.d(TAG, "onCompleted: User found and logged in: " + user.toString());
+
+                    SharedPreferencesUtil.saveUser(LoginActivity.this, user);
+
+                    Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
+                    mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(mainIntent);
+                } else {
+                    Log.d(TAG, "onCompleted: User not found");
+                    Toast.makeText(LoginActivity.this, "אימייל או סיסמה שגויים", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
             public void onFailed(Exception e) {
-                Log.e(TAG, "onFailed: Callback received - FAILED");
                 Log.e(TAG, "onFailed: Failed to retrieve user data", e);
-
-                // Sign out user if failed
+                Toast.makeText(LoginActivity.this, "שגיאה בחיבור למסד הנתונים", Toast.LENGTH_SHORT).show();
                 SharedPreferencesUtil.signOutUser(LoginActivity.this);
             }
         });

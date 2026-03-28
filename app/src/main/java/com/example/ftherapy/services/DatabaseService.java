@@ -5,6 +5,10 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import android.net.Uri;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
 import com.example.ftherapy.models.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -56,12 +60,15 @@ public class DatabaseService {
     /// @see DatabaseReference
     /// @see FirebaseDatabase#getReference()
     private final DatabaseReference databaseReference;
+    private final StorageReference storageReference;
+
 
     /// use getInstance() to get an instance of this class
     /// @see DatabaseService#getInstance()
     private DatabaseService() {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://ftherapy-aa663-default-rtdb.europe-west1.firebasedatabase.app/");
         databaseReference = firebaseDatabase.getReference();
+        storageReference = FirebaseStorage.getInstance().getReference();
     }
 
     /// get an instance of this class
@@ -312,6 +319,7 @@ public class DatabaseService {
         });
     }
 
+
     public void updateUser(@NotNull final User user, @Nullable final DatabaseCallback<Void> callback) {
         runTransaction(USERS_PATH + "/" + user.getId(), User.class, currentUser -> user, new DatabaseCallback<User>() {
             @Override
@@ -330,6 +338,48 @@ public class DatabaseService {
         });
     }
 
+
+
+    /// update the admin status of a user
+    public void updateUserAdminStatus(@NotNull final String uid, final boolean isAdmin, @Nullable final DatabaseCallback<Void> callback) {
+        databaseReference.child(USERS_PATH).child(uid).child("admin").setValue(isAdmin)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        if (callback != null) callback.onCompleted(null);
+                    } else {
+                        if (callback != null) callback.onFailed(task.getException());
+                    }
+                });
+    }
+
+    /// העלאת תמונת פרופיל ל Storage ועדכון הקישור ב Database
+    public void uploadProfilePicture(@NotNull final String uid, @NotNull android.net.Uri imageUri, @NotNull final DatabaseCallback<String> callback) {
+        com.google.firebase.storage.StorageReference fileRef = storageReference.child("profiles/" + uid + ".jpg");
+
+        fileRef.putFile(imageUri)
+                .addOnSuccessListener(taskSnapshot -> {
+                    fileRef.getDownloadUrl().addOnSuccessListener(uri -> {
+                        String downloadUrl = uri.toString();
+                        // עדכון הקישור ב Database
+                        databaseReference.child(USERS_PATH).child(uid).child("profileImageUrl").setValue(downloadUrl)
+                                .addOnCompleteListener(task -> {
+                                    if (task.isSuccessful()) callback.onCompleted(downloadUrl);
+                                    else callback.onFailed(task.getException());
+                                });
+                    });
+                })
+                .addOnFailureListener(callback::onFailed);
+    }
+    private void updateUserProfileImageUrl(@NotNull final String uid, @NotNull String downloadUrl, @NotNull final DatabaseCallback<String> callback) {
+        databaseReference.child(USERS_PATH).child(uid).child("profileImageUrl").setValue(downloadUrl)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        callback.onCompleted(downloadUrl);
+                    } else {
+                        callback.onFailed(task.getException());
+                    }
+                });
+    }
 
     // endregion User Section
 

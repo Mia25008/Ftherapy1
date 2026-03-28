@@ -9,19 +9,6 @@
     tools:context=".screens.MainActivity" >
 
     <Button
-        android:id="@+id/button_main_to_update"
-        android:layout_width="219dp"
-        android:layout_height="46dp"
-        android:backgroundTint="#f1d4ce"
-        android:fontFamily="@font/rubik_semibold"
-        android:text="עדכון פרטים"
-        android:textColor="#66000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
         android:id="@+id/button_main_to_Ulist"
         android:layout_width="219dp"
         android:layout_height="46dp"
@@ -34,7 +21,36 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.405" />
+        app:layout_constraintVertical_bias="0.30" />
+
+    <Button
+        android:id="@+id/button_main_to_info"
+        android:layout_width="219dp"
+        android:layout_height="46dp"
+        android:backgroundTint="#f1d4ce"
+        android:fontFamily="@font/rubik_semibold"
+        android:text="שיטות טיפול"
+        android:textColor="#66000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.40" />
+
+    <Button
+        android:id="@+id/button_main_to_update"
+        android:layout_width="219dp"
+        android:layout_height="46dp"
+        android:backgroundTint="#f1d4ce"
+        android:fontFamily="@font/rubik_semibold"
+        android:text="עדכון פרטים"
+        android:textColor="#66000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.50" />
+
 
     <Button
         android:id="@+id/button_main_to_product"
@@ -50,20 +66,6 @@
         app:layout_constraintTop_toBottomOf="@+id/button_main_logout"
         app:layout_constraintVertical_bias="0.07999998" />
 
-    <Button
-        android:id="@+id/button_main_to_info"
-        android:layout_width="219dp"
-        android:layout_height="46dp"
-        android:backgroundTint="#f1d4ce"
-        android:fontFamily="@font/rubik_semibold"
-        android:text="שיטות טיפול"
-        android:textColor="#66000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.405"
-        />
 
     <Button
         android:id="@+id/button_main_logout"
