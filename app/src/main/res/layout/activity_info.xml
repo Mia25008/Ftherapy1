@@ -22,7 +22,7 @@
             android:background="#E2C5BF"
             app:navigationIcon="?attr/homeAsUpIndicator"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:title="שיטות טיפול בקליניקה"
+            app:title="שיטות טיפול ומיקום"
             app:titleTextColor="#9A000000">
 
             <ImageView
@@ -188,6 +188,46 @@
                         android:textSize="15sp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="12dp"
+                android:fontFamily="@font/rubik_semibold"
+                android:gravity="right"
+                android:text="איך מגיעים אלינו?"
+                android:textColor="#8E736E"
+                android:textSize="20sp" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_map"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="3dp">
+
+                <org.osmdroid.views.MapView
+                    android:id="@+id/map_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </androidx.cardview.widget.CardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_navigate"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginBottom="32dp"
+                android:fontFamily="@font/rubik_semibold"
+                android:text="ניווט לקליניקה ב-Google Maps"
+                android:textColor="#000000"
+                app:backgroundTint="#E2C5BF"
+                app:cornerRadius="28dp"
+                app:icon="@android:drawable/ic_menu_directions"
+                app:iconGravity="textStart"
+                app:iconTint="#000000" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

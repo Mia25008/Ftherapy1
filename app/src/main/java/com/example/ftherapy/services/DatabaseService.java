@@ -1,11 +1,14 @@
 package com.example.ftherapy.services;
 
+import android.graphics.Bitmap;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import android.net.Uri;
+
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -19,6 +22,7 @@ import com.google.firebase.database.Transaction;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -352,33 +356,32 @@ public class DatabaseService {
                 });
     }
 
-    /// העלאת תמונת פרופיל ל Storage ועדכון הקישור ב Database
-    public void uploadProfilePicture(@NotNull final String uid, @NotNull android.net.Uri imageUri, @NotNull final DatabaseCallback<String> callback) {
-        com.google.firebase.storage.StorageReference fileRef = storageReference.child("profiles/" + uid + ".jpg");
+    // פונקציה חדשה: העלאת תמונה כטקסט (Base64) ל-Realtime Database
+    public void uploadProfilePictureAsBase64(@NotNull final String uid, @NotNull android.graphics.Bitmap bitmap, @NotNull final DatabaseCallback<String> callback) {
+        if (bitmap == null) {
+            callback.onFailed(new Exception("Bitmap is null"));
+            return;
+        }
 
-        fileRef.putFile(imageUri)
-                .addOnSuccessListener(taskSnapshot -> {
-                    fileRef.getDownloadUrl().addOnSuccessListener(uri -> {
-                        String downloadUrl = uri.toString();
-                        // עדכון הקישור ב Database
-                        databaseReference.child(USERS_PATH).child(uid).child("profileImageUrl").setValue(downloadUrl)
-                                .addOnCompleteListener(task -> {
-                                    if (task.isSuccessful()) callback.onCompleted(downloadUrl);
-                                    else callback.onFailed(task.getException());
-                                });
+        try {
+            java.io.ByteArrayOutputStream baos = new java.io.ByteArrayOutputStream();
+            bitmap.compress(android.graphics.Bitmap.CompressFormat.JPEG, 20, baos);
+            byte[] imageBytes = baos.toByteArray();
+
+            String base64Image = android.util.Base64.encodeToString(imageBytes, android.util.Base64.DEFAULT);
+
+            databaseReference.child(USERS_PATH).child(uid).child("profileImageUrl")
+                    .setValue(base64Image)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            callback.onCompleted(base64Image);
+                        } else {
+                            callback.onFailed(task.getException());
+                        }
                     });
-                })
-                .addOnFailureListener(callback::onFailed);
-    }
-    private void updateUserProfileImageUrl(@NotNull final String uid, @NotNull String downloadUrl, @NotNull final DatabaseCallback<String> callback) {
-        databaseReference.child(USERS_PATH).child(uid).child("profileImageUrl").setValue(downloadUrl)
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        callback.onCompleted(downloadUrl);
-                    } else {
-                        callback.onFailed(task.getException());
-                    }
-                });
+        } catch (Exception e) {
+            callback.onFailed(e);
+        }
     }
 
     // endregion User Section

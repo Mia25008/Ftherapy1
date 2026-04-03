@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FDEBE9"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:fontFamily="@font/rubik_semibold"
+        android:text="איך מגיעים אלינו?"
+        android:textColor="#baa09b"
+        android:textSize="26sp"
+        android:layout_marginBottom="16dp" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="6dp">
+
+        <org.osmdroid.views.MapView
+            android:id="@+id/map_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:cardBackgroundColor="#f1d4ce"
+        app:cardCornerRadius="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:gravity="right">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="כתובת הקליניקה:"
+                android:textStyle="bold"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/tv_clinic_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="רחוב הדוגמה 12, עיר"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="16dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_navigate"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:text="ניווט ב-Google Maps"
+                android:fontFamily="@font/rubik"
+                app:backgroundTint="#E2C5BF"
+                app:cornerRadius="15dp"
+                app:icon="@android:drawable/ic_menu_directions"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

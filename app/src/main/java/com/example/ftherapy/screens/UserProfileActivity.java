@@ -1,8 +1,11 @@
 package com.example.ftherapy.screens;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -25,7 +28,7 @@ import com.example.ftherapy.services.DatabaseService;
 import com.example.ftherapy.utils.SharedPreferencesUtil;
 import com.example.ftherapy.utils.Validator;
 
-import java.util.List;
+import java.io.IOException;
 
 public class UserProfileActivity extends BaseActivity implements View.OnClickListener {
 
@@ -143,12 +146,18 @@ public class UserProfileActivity extends BaseActivity implements View.OnClickLis
                 adminBadge.setVisibility(user.admin ? View.VISIBLE : View.GONE);
 
                 if (user.getProfileImageUrl() != null && !user.getProfileImageUrl().isEmpty()) {
-                    com.bumptech.glide.Glide.with(UserProfileActivity.this)
-                            .load(user.getProfileImageUrl())
-                            .placeholder(android.R.drawable.ic_menu_gallery)
-                            .error(android.R.drawable.ic_menu_report_image)
-                            .circleCrop()
-                            .into(ivProfilePicture);
+                    try {
+                        byte[] decodedString = Base64.decode(user.getProfileImageUrl(), Base64.DEFAULT);
+                        com.bumptech.glide.Glide.with(UserProfileActivity.this)
+                                .asBitmap()
+                                .load(decodedString)
+                                .placeholder(android.R.drawable.ic_menu_gallery)
+                                .error(android.R.drawable.ic_menu_report_image)
+                                .circleCrop()
+                                .into(ivProfilePicture);
+                    } catch (Exception e) {
+                        Log.e(TAG, "Error decoding image", e);
+                    }
                 }
             }
 
@@ -181,8 +190,10 @@ public class UserProfileActivity extends BaseActivity implements View.OnClickLis
         selectedUser.setEmail(email);
         selectedUser.setPassword(password);
 
+        // קודם מעדכנים את נתוני הטקסט
         updateUserInDatabase(selectedUser);
 
+        // אם נבחרה תמונה חדשה, מעלים אותה בשיטה החדשה
         if (selectedImageUri != null) {
             uploadImageAndSave();
         }
@@ -193,7 +204,6 @@ public class UserProfileActivity extends BaseActivity implements View.OnClickLis
             @Override
             public void onCompleted(Void result) {
                 Toast.makeText(UserProfileActivity.this, "הפרופיל עודכן בהצלחה", Toast.LENGTH_SHORT).show();
-                // אם המשתמש עדכן את עצמו, נעדכן גם את ה-SharedPrefs
                 if (isCurrentUser) {
                     SharedPreferencesUtil.saveUser(UserProfileActivity.this, user);
                 }
@@ -208,19 +218,30 @@ public class UserProfileActivity extends BaseActivity implements View.OnClickLis
     }
 
     private void uploadImageAndSave() {
-        databaseService.uploadProfilePicture(selectedUid, selectedImageUri, new DatabaseService.DatabaseCallback<String>() {
-            @Override
-            public void onCompleted(String downloadUrl) {
-                Toast.makeText(UserProfileActivity.this, "התמונה עודכנה", Toast.LENGTH_SHORT).show();
-                selectedImageUri = null;
-            }
+        if (selectedImageUri == null) return;
 
-            @Override
-            public void onFailed(Exception e) {
-                Log.e(TAG, "Image upload failed", e);
-                Toast.makeText(UserProfileActivity.this, "העלאת תמונה נכשלה", Toast.LENGTH_SHORT).show();
-            }
-        });
+        try {
+            // הפיכת ה-Uri ל-Bitmap
+            Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageUri);
+
+            // שליחה ל-Service בשיטה החדשה
+            databaseService.uploadProfilePictureAsBase64(selectedUid, bitmap, new DatabaseService.DatabaseCallback<String>() {
+                @Override
+                public void onCompleted(String base64Image) {
+                    Toast.makeText(UserProfileActivity.this, "התמונה עודכנה!", Toast.LENGTH_SHORT).show();
+                    selectedImageUri = null;
+                    ivProfilePicture.setImageBitmap(bitmap);
+                }
+
+                @Override
+                public void onFailed(Exception e) {
+                    Log.e(TAG, "Image upload failed", e);
+                    Toast.makeText(UserProfileActivity.this, "שגיאה בהעלאה", Toast.LENGTH_SHORT).show();
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private boolean isValid(String firstName, String lastName, String phone, String email, String password) {
