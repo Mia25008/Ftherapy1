@@ -42,7 +42,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
                 intent.putExtra("product_name", p.getName());
                 intent.putExtra("product_image", p.getImageRes());
-
+                intent.putExtra("product_description", p.getDescription());
                 v.getContext().startActivity(intent);
             }
         });
