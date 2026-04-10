@@ -3,16 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="24dp"
+    app:cardCornerRadius="28dp"
     app:cardElevation="8dp"
-    android:layout_margin="16dp">
+    android:layout_margin="20dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FDEBE9"
+        android:background="#FFFFFF"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="28dp">
 
         <TextView
             android:id="@+id/tv_dialog_title"
@@ -21,50 +21,54 @@
             android:layout_gravity="center"
             android:fontFamily="@font/rubik_semibold"
             android:text="ניהול משתמש"
-            android:textColor="#baa09b"
-            android:textSize="20sp"
-            android:layout_marginBottom="20dp" />
+            android:textColor="#1C1C1E"
+            android:textSize="22sp"
+            android:layout_marginBottom="24dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_dialog_admin"
-            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="60dp"
             android:layout_marginBottom="12dp"
-            android:fontFamily="@font/rubik"
-            android:text="הפוך למנהל"
+            android:fontFamily="@font/rubik_semibold"
+            android:text="הפוך למנהל מערכת"
             android:textAllCaps="false"
-            android:textColor="@android:color/black"
-            app:backgroundTint="#f1d4ce"
-            app:cornerRadius="16dp"
+            android:textColor="#4A4A4A"
+            android:textSize="16sp"
+            app:backgroundTint="#EAD7D1"
+            app:cornerRadius="30dp"
             app:icon="@android:drawable/ic_menu_edit"
             app:iconGravity="textStart"
-            app:iconTint="@android:color/black" />
+            app:iconTint="#4A4A4A"
+            app:elevation="0dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_dialog_delete"
-            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="60dp"
             android:layout_marginBottom="12dp"
-            android:fontFamily="@font/rubik"
+            android:fontFamily="@font/rubik_semibold"
             android:text="מחיקת משתמש"
             android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            app:backgroundTint="#baa09b"
-            app:cornerRadius="16dp"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            app:backgroundTint="#A57C7C"
+            app:cornerRadius="30dp"
             app:icon="@android:drawable/ic_menu_delete"
             app:iconGravity="textStart"
-            app:iconTint="@android:color/white" />
+            app:iconTint="#FFFFFF"
+            app:elevation="0dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_dialog_cancel"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/rubik"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/rubik_semibold"
             android:text="ביטול"
-            android:textColor="#baa09b" />
+            android:textColor="#8E8E93"
+            android:textSize="15sp" />
 
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

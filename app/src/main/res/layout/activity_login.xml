@@ -17,7 +17,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#E2C5BF"
+            android:background="#D5BBB9"
             app:navigationIcon="?attr/homeAsUpIndicator"
             app:title="כניסה למערכת"
             app:titleTextColor="@android:color/black" />
@@ -52,7 +52,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#f1d4ce"
+                    android:background="#CDF1D4CE"
                     android:orientation="vertical"
                     android:padding="24dp">
 
@@ -64,7 +64,7 @@
                         android:layout_marginBottom="20dp"
                         android:fontFamily="@font/rubik_semibold"
                         android:text="התחברות"
-                        android:textColor="#baa09b"
+                        android:textColor="#A57C7C"
                         android:textSize="20sp" />
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -117,7 +117,7 @@
                         android:text="התחבר"
                         android:textAllCaps="false"
                         android:textSize="16sp"
-                        app:backgroundTint="#E2C5BF"
+                        app:backgroundTint="#A57C7C"
                         app:cornerRadius="30dp" />
 
                 </LinearLayout>

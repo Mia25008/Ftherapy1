@@ -1,4 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <group
+        android:id="@+id/primary_group"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_info"
+            android:icon="@drawable/info"
+            android:title=" שיטות טיפול ומיקום" />
+
+        <item
+            android:id="@+id/nav_product"
+            android:icon="@drawable/baseline_spa_24"
+            android:title="קטלוג מוצרים" />
+
+        <item
+            android:id="@+id/nav_update"
+            android:icon="@drawable/catalog"
+            android:title="עדכון פרטים" />
+        <item
+            android:id="@+id/nav_ulist"
+            android:icon="@drawable/userslist"
+            android:title="רשימת משתמשים"
+            android:visible="false" />
+    </group>
+
+    <group android:id="@+id/secondary_group">
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/logout"
+            android:title="התנתקות" />
+    </group>
+
 </menu>

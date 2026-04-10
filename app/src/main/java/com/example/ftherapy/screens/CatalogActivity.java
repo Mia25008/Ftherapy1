@@ -1,9 +1,10 @@
 package com.example.ftherapy.screens;
 
-import android.view.MenuItem;
+import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.widget.Toolbar;
+import android.view.MenuItem;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,7 +28,6 @@ public class CatalogActivity extends AppCompatActivity {
         rv.setLayoutManager(new GridLayoutManager(this, 2));
 
         List<Product> list = new ArrayList<>();
-
         list.add(new Product("שמן לבנדר", R.drawable.lavend, "שמן אתרי טהור להרגעה עמוקה, סיוע בשינה איכותית והפגת מתחים."));
         list.add(new Product("מבער", R.drawable.burner, "מבער קרמי מעוצב להפצת ניחוחות משכרים ויצירת אווירה קסומה בחלל."));
         list.add(new Product("קרם פנים", R.drawable.cream, "פורמולה עשירה בוויטמינים להזנה עמוקה, מיצוק והענקת מראה זוהר לעור."));
@@ -40,6 +40,17 @@ public class CatalogActivity extends AppCompatActivity {
         rv.setAdapter(new ProductAdapter(list));
     }
 
+    private void setupToolbar() {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                getSupportActionBar().setDisplayShowTitleEnabled(false); // מבטל את הטקסט הגנרי למראה נקי
+            }
+        }
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -47,15 +58,5 @@ public class CatalogActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-    private void setupToolbar() {
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        if (toolbar != null) {
-            setSupportActionBar(toolbar);
-            if (getSupportActionBar() != null) {
-                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-                getSupportActionBar().setDisplayShowHomeEnabled(true);
-            }
-        }
     }
 }

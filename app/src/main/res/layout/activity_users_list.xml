@@ -17,7 +17,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#E2C5BF"
+            android:background="#D5BBB9"
             app:navigationIcon="?attr/homeAsUpIndicator"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:title="משתמשים" />
@@ -44,7 +44,7 @@
                 android:layout_marginBottom="4dp"
                 android:fontFamily="@font/rubik"
                 android:text="ניהול משתמשים"
-                android:textColor="#baa09b"
+                android:textColor="#A57C7C"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
@@ -55,7 +55,7 @@
                 android:layout_marginBottom="12dp"
                 android:fontFamily="@font/rubik"
                 android:text="סך כל המשתמשים: 0"
-                android:textColor="#baa09b"
+                android:textColor="#A57C7C"
                 android:textSize="14sp" />
 
             <androidx.appcompat.widget.SearchView
@@ -88,7 +88,7 @@
                     android:id="@+id/rv_users_list"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#f1d4ce"
+                    android:background="#CDF1D4CE"
                     android:clipToPadding="false"
                     android:padding="8dp"
                     tools:listitem="@layout/item_user" />

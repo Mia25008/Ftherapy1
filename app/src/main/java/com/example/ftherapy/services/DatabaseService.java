@@ -9,8 +9,6 @@ import androidx.annotation.Nullable;
 import android.net.Uri;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 import com.example.ftherapy.models.User;
 import com.google.firebase.database.DataSnapshot;
@@ -64,7 +62,6 @@ public class DatabaseService {
     /// @see DatabaseReference
     /// @see FirebaseDatabase#getReference()
     private final DatabaseReference databaseReference;
-    private final StorageReference storageReference;
 
 
     /// use getInstance() to get an instance of this class
@@ -72,7 +69,6 @@ public class DatabaseService {
     private DatabaseService() {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://ftherapy-aa663-default-rtdb.europe-west1.firebasedatabase.app/");
         databaseReference = firebaseDatabase.getReference();
-        storageReference = FirebaseStorage.getInstance().getReference();
     }
 
     /// get an instance of this class
