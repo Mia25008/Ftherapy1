@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -43,6 +45,39 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        if (currentUser != null) {
+            View headerView = navigationView.getHeaderView(0);
+            TextView navUserName = headerView.findViewById(R.id.nav_user_name);
+            TextView navUserEmail = headerView.findViewById(R.id.nav_user_email);
+            TextView navUserInitial = headerView.findViewById(R.id.nav_user_initial);
+            ImageView navUserImage = headerView.findViewById(R.id.nav_user_image);
+
+            navUserName.setText(currentUser.getFullName());
+            navUserEmail.setText(currentUser.getEmail());
+
+            if (currentUser.getProfileImageUrl() != null && !currentUser.getProfileImageUrl().isEmpty()) {
+                navUserImage.setVisibility(View.VISIBLE);
+                navUserInitial.setVisibility(View.GONE);
+
+                try {
+                    byte[] decodedString = android.util.Base64.decode(currentUser.getProfileImageUrl(), android.util.Base64.DEFAULT);
+                    com.bumptech.glide.Glide.with(this)
+                            .asBitmap()
+                            .load(decodedString)
+                            .circleCrop()
+                            .into(navUserImage);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else {
+                navUserInitial.setVisibility(View.VISIBLE);
+
+                if (currentUser.getFullName() != null && !currentUser.getFullName().isEmpty()) {
+                    navUserInitial.setText(currentUser.getFullName().substring(0, 1).toUpperCase());
+                }
+            }
+        }
 
         View headerView = navigationView.getHeaderView(0);
         android.widget.TextView navUserName = headerView.findViewById(R.id.nav_user_name);

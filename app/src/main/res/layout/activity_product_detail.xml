@@ -17,7 +17,7 @@
             android:background="#D5BBB9"
             app:navigationIcon="?attr/homeAsUpIndicator"
             app:title="פרטי המוצר"
-            app:titleTextColor="#1C1C1E">
+            app:titleTextColor="#4A4A4A">
 
             <ImageView
                 android:id="@+id/toolbar_logo"
