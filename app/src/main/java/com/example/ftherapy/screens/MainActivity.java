@@ -46,46 +46,36 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        if (currentUser != null) {
-            View headerView = navigationView.getHeaderView(0);
-            TextView navUserName = headerView.findViewById(R.id.nav_user_name);
-            TextView navUserEmail = headerView.findViewById(R.id.nav_user_email);
-            TextView navUserInitial = headerView.findViewById(R.id.nav_user_initial);
-            ImageView navUserImage = headerView.findViewById(R.id.nav_user_image);
-
-            navUserName.setText(currentUser.getFullName());
-            navUserEmail.setText(currentUser.getEmail());
-
-            if (currentUser.getProfileImageUrl() != null && !currentUser.getProfileImageUrl().isEmpty()) {
-                navUserImage.setVisibility(View.VISIBLE);
-                navUserInitial.setVisibility(View.GONE);
-
-                try {
-                    byte[] decodedString = android.util.Base64.decode(currentUser.getProfileImageUrl(), android.util.Base64.DEFAULT);
-                    com.bumptech.glide.Glide.with(this)
-                            .asBitmap()
-                            .load(decodedString)
-                            .circleCrop()
-                            .into(navUserImage);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            } else {
-                navUserInitial.setVisibility(View.VISIBLE);
-
-                if (currentUser.getFullName() != null && !currentUser.getFullName().isEmpty()) {
-                    navUserInitial.setText(currentUser.getFullName().substring(0, 1).toUpperCase());
-                }
-            }
-        }
-
         View headerView = navigationView.getHeaderView(0);
-        android.widget.TextView navUserName = headerView.findViewById(R.id.nav_user_name);
-        android.widget.TextView navUserEmail = headerView.findViewById(R.id.nav_user_email);
+        TextView navUserName = headerView.findViewById(R.id.nav_user_name);
+        TextView navUserEmail = headerView.findViewById(R.id.nav_user_email);
+        TextView navUserInitial = headerView.findViewById(R.id.nav_user_initial);
+        ImageView navUserImage = headerView.findViewById(R.id.nav_user_image);
 
-        if (currentUser != null) {
-            navUserName.setText("שלום, " + currentUser.getFullName());
-            navUserEmail.setText(currentUser.getEmail());
+        navUserName.setText("שלום, " + currentUser.getFullName());
+        navUserEmail.setText(currentUser.getEmail());
+
+        String imageBase64 = currentUser.getProfileImageUrl();
+        if (imageBase64 != null && !imageBase64.isEmpty()) {
+            navUserImage.setVisibility(View.VISIBLE);
+            navUserInitial.setVisibility(View.GONE);
+
+            try {
+                byte[] decodedString = android.util.Base64.decode(imageBase64, android.util.Base64.DEFAULT);
+                com.bumptech.glide.Glide.with(this)
+                        .asBitmap()
+                        .load(decodedString)
+                        .circleCrop()
+                        .into(navUserImage);
+            } catch (Exception e) {
+                navUserImage.setVisibility(View.GONE);
+                navUserInitial.setVisibility(View.VISIBLE);
+                setInitial(navUserInitial, currentUser.getFullName());
+            }
+        } else {
+            navUserImage.setVisibility(View.GONE);
+            navUserInitial.setVisibility(View.VISIBLE);
+            setInitial(navUserInitial, currentUser.getFullName());
         }
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
@@ -103,6 +93,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+    private void setInitial(TextView textView, String fullName) {
+        if (fullName != null && !fullName.isEmpty()) {
+            textView.setText(fullName.substring(0, 1).toUpperCase());
+        }
+    }
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
@@ -113,6 +109,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(new Intent(MainActivity.this, UserProfileActivity.class));
         } else if (id == R.id.nav_product) {
             startActivity(new Intent(MainActivity.this, CatalogActivity.class));
+        } else if (id == R.id.nav_booking) {
+            startActivity(new Intent(MainActivity.this, BookingActivity.class));
         } else if (id == R.id.nav_ulist) {
             startActivity(new Intent(MainActivity.this, UsersListActivity.class));
         } else if (id == R.id.nav_logout) {

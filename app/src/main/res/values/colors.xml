@@ -2,7 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="step_done">#4CAF50</color>
+    <color name="step_done">#8E736E</color>
     <color name="step_next">#D3D3D3</color>
-    <color name="step_active">#000000</color>
+    <color name="step_active">#CDF1D4CE</color>
 </resources>

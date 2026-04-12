@@ -19,6 +19,9 @@
         android:theme="@style/Theme.Ftherapy"
         tools:targetApi="31">
         <activity
+            android:name=".screens.BookingActivity"
+            android:exported="false" />
+        <activity
             android:name=".screens.drawer_menu"
             android:exported="false" />
         <activity

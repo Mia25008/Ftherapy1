@@ -116,7 +116,8 @@ public class CatalogActivity extends AppCompatActivity implements NavigationView
             startActivity(new Intent(this, InfoActivity.class));
             finish();
         } else if (id == R.id.nav_product) {
-            // כבר פה
+        } else if (id == R.id.nav_booking) {
+            startActivity(new Intent(this, BookingActivity.class));
         } else if (id == R.id.nav_update) {
             startActivity(new Intent(this, UserProfileActivity.class));
             finish();

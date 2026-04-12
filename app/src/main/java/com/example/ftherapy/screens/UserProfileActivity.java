@@ -179,6 +179,8 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
                 startActivity(new Intent(this, UserProfileActivity.class));
                 finish();
             }
+        } else if (id == R.id.nav_booking) {
+            startActivity(new Intent(this, BookingActivity.class));
         } else if (id == R.id.nav_ulist) {
             startActivity(new Intent(this, UsersListActivity.class));
             finish();

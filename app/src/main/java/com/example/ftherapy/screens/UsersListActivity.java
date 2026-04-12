@@ -138,6 +138,8 @@ public class UsersListActivity extends AppCompatActivity implements NavigationVi
         } else if (id == R.id.nav_update) {
             startActivity(new Intent(this, UserProfileActivity.class));
             finish();
+        } else if (id == R.id.nav_booking) {
+            startActivity(new Intent(this, BookingActivity.class));
         } else if (id == R.id.nav_logout) {
             showLogoutDialog();
         }
