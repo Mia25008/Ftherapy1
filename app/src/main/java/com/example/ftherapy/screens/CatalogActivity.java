@@ -97,14 +97,14 @@ public class CatalogActivity extends AppCompatActivity implements NavigationView
         rv.setLayoutManager(new GridLayoutManager(this, 2));
 
         List<Product> list = new ArrayList<>();
-        list.add(new Product("שמן לבנדר", R.drawable.lavend, "שמן אתרי טהור להרגעה עמוקה, סיוע בשינה איכותית והפגת מתחים."));
-        list.add(new Product("מבער", R.drawable.burner, "מבער קרמי מעוצב להפצת ניחוחות משכרים ויצירת אווירה קסומה בחלל."));
-        list.add(new Product("קרם פנים", R.drawable.cream, "פורמולה עשירה בוויטמינים להזנה עמוקה, מיצוק והענקת מראה זוהר לעור."));
+        list.add(new Product("שמן לבנדר", R.drawable.lavender, "שמן אתרי טהור להרגעה עמוקה, סיוע בשינה איכותית והפגת מתחים."));
+        list.add(new Product("מבער שמנים", R.drawable.burner, "מבער קרמי מעוצב להפצת ניחוחות משכרים ויצירת אווירה קסומה בחלל."));
+        list.add(new Product("מארז מוצרים", R.drawable.product_package, "ערכה מוצרים הכוללת מקל פאולו סנטו, צרור מרווה וספרי חיטוי, המיועדת לטיהור אנרגטי של הבית, לניקוי המרחב ולחיבור פנימי."));
         list.add(new Product("קרם גוף", R.drawable.cream, "מרקם קטיפתי בניחוח עדין הנספג במהירות ומעניק לחות לאורך כל היום."));
-        list.add(new Product("שפתון לחות", R.drawable.cream, "טיפול אינטנסיבי לשפתיים יבשות, מבוסס על חמאת שיאה ושמנים טבעיים."));
-        list.add(new Product("שמן גוף", R.drawable.cream, "תערובת שמנים יוקרתית לעיסוי והזנה, משאירה את העור רך ומבוסם."));
-        list.add(new Product("בושם שמן", R.drawable.cream, "ניחוח מרוכז ועמיד לאורך זמן על בסיס שמן, ללא אלכוהול, עדין לעור."));
-        list.add(new Product("מבשם אוויר", R.drawable.cream, "תרסיס מרענן המנטרל ריחות ומשרה תחושת ניקיון ורוגע בכל חדר."));
+        list.add(new Product("שפתון לחות", R.drawable.lipstick, "שפתון לחות המשלב את העושר של חמאת שיאה עם סגולותיהם של שמנים מהטבע להזנה מיידית ורכות מתמשכת."));
+        list.add(new Product("תרסיס חיטוי טבעי", R.drawable.spray, "תרסיס חיטוי המבוסס על תמציות צמחים, המאפשר חיטוי יעיל ונעים של משטחים וידיים ללא שימוש בכימיקלים חריפים."));
+        list.add(new Product("נר טבעי", R.drawable.candle, "נר בעבודת יד המבוסס על שעווה צמחית ושמנים אתריים, המפיץ ניחוח מרגיע ומשרה אווירה של שלווה ורוגע בחלל החדר."));
+        list.add(new Product("תרסיס שמנים", R.drawable.oilspray, "תרסיס מרענן המנטרל ריחות ומשרה תחושת ניקיון ורוגע בכל חדר."));
 
         rv.setAdapter(new ProductAdapter(list));
     }
@@ -112,15 +112,18 @@ public class CatalogActivity extends AppCompatActivity implements NavigationView
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.nav_info) {
+        if (id == R.id.nav_main) {
+            startActivity(new Intent(this, MainActivity.class));
+        } else if (id == R.id.nav_info) {
             startActivity(new Intent(this, InfoActivity.class));
-            finish();
-        } else if (id == R.id.nav_product) {
-        } else if (id == R.id.nav_booking) {
-            startActivity(new Intent(this, BookingActivity.class));
         } else if (id == R.id.nav_update) {
             startActivity(new Intent(this, UserProfileActivity.class));
-            finish();
+        } else if (id == R.id.nav_product) {
+            startActivity(new Intent(this, CatalogActivity.class));
+        } else if (id == R.id.nav_booking) {
+            startActivity(new Intent(this, BookingActivity.class));
+        } else if (id == R.id.nav_ulist) {
+            startActivity(new Intent(this, UsersListActivity.class));
         } else if (id == R.id.nav_logout) {
             showLogoutDialog();
         }

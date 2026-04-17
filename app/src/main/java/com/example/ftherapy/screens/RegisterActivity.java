@@ -54,6 +54,18 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         toLogFromReg = findViewById(R.id.button_register_to_login);
         toLogFromReg.setOnClickListener(this);
 
+        androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegisterActivity.this, LandingActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
 
     }
 

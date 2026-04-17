@@ -13,7 +13,7 @@
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#CDF1D4CE">
+        android:background="#FDEBE9">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -23,7 +23,17 @@
             app:titleTextColor="#4A4A4A"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/toolbar_logo"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="16dp"
+                app:srcCompat="@drawable/logo" />
+
+        </androidx.appcompat.widget.Toolbar>
 
         <ScrollView
             android:id="@+id/scrollView2"
@@ -46,15 +56,16 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_marginTop="20dp"
-                    android:src="@drawable/logo" /> <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:fontFamily="@font/rubik_semibold"
-                android:text="ברוכים הבאים ל-F-Therapy"
-                android:textColor="#4A4A4A"
-                android:textSize="24sp"
-                android:textAlignment="center" />
+                    android:src="@drawable/logo" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/rubik_semibold"
+                    android:text="ברוכים הבאים ל-F-Therapy"
+                    android:textColor="#4A4A4A"
+                    android:textSize="24sp"
+                    android:textAlignment="center" />
 
                 <View
                     android:layout_width="60dp"

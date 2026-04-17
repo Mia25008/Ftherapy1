@@ -129,17 +129,18 @@ public class UsersListActivity extends AppCompatActivity implements NavigationVi
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.nav_info) {
+        if (id == R.id.nav_main) {
+            startActivity(new Intent(this, MainActivity.class));
+        } else if (id == R.id.nav_info) {
             startActivity(new Intent(this, InfoActivity.class));
-            finish();
-        } else if (id == R.id.nav_product) {
-            startActivity(new Intent(this, CatalogActivity.class));
-            finish();
         } else if (id == R.id.nav_update) {
             startActivity(new Intent(this, UserProfileActivity.class));
-            finish();
+        } else if (id == R.id.nav_product) {
+            startActivity(new Intent(this, CatalogActivity.class));
         } else if (id == R.id.nav_booking) {
             startActivity(new Intent(this, BookingActivity.class));
+        } else if (id == R.id.nav_ulist) {
+            startActivity(new Intent(this, UsersListActivity.class));
         } else if (id == R.id.nav_logout) {
             showLogoutDialog();
         }

@@ -23,7 +23,6 @@ import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private static final String TAG = "MainActivity";
     private DrawerLayout drawerLayout;
     private String selectedUserid;
 
@@ -103,7 +102,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.nav_info) {
+        if (id == R.id.nav_main) {
+            startActivity(new Intent(MainActivity.this, MainActivity.class));
+        } else if (id == R.id.nav_info) {
             startActivity(new Intent(MainActivity.this, InfoActivity.class));
         } else if (id == R.id.nav_update) {
             startActivity(new Intent(MainActivity.this, UserProfileActivity.class));

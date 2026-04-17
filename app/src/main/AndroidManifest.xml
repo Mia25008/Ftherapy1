@@ -25,9 +25,6 @@
             android:name=".screens.drawer_menu"
             android:exported="false" />
         <activity
-            android:name=".screens.ClinicLocationActivity"
-            android:exported="false" />
-        <activity
             android:name=".screens.dialog_custom"
             android:exported="false" />
         <activity

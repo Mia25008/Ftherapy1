@@ -168,17 +168,18 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.nav_info) {
+
+        if (id == R.id.nav_main) {
+            startActivity(new Intent(this, MainActivity.class));
+        } else if (id == R.id.nav_info) {
             startActivity(new Intent(this, InfoActivity.class));
-            finish();
-        } else if (id == R.id.nav_product) {
-            startActivity(new Intent(this, CatalogActivity.class));
-            finish();
         } else if (id == R.id.nav_update) {
             if (!isCurrentUser) {
                 startActivity(new Intent(this, UserProfileActivity.class));
                 finish();
             }
+        } else if (id == R.id.nav_product) {
+            startActivity(new Intent(this, CatalogActivity.class));
         } else if (id == R.id.nav_booking) {
             startActivity(new Intent(this, BookingActivity.class));
         } else if (id == R.id.nav_ulist) {
@@ -187,6 +188,7 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
         } else if (id == R.id.nav_logout) {
             showLogoutDialog();
         }
+
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }

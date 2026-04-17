@@ -55,6 +55,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         tvLogin = findViewById(R.id.textView_login);
         toRegFromLog = findViewById(R.id.button_login_to_register);
 
+        androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, LandingActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         // Set up Listeners
         btnLogin.setOnClickListener(this);
         tvLogin.setOnClickListener(this);
@@ -97,10 +109,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             // Login user
             loginUser(email, password);
-        } else if (v.getId() == tvLogin.getId()) {
-            // Navigate to Register Activity
-            Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
-            startActivity(registerIntent);
         }
     }
 

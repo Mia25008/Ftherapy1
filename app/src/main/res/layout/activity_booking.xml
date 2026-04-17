@@ -18,7 +18,17 @@
             android:layout_height="?attr/actionBarSize"
             android:background="#D5BBB9"
             app:title="קביעת תור"
-            app:titleTextColor="#4A4A4A"/>
+            app:titleTextColor="#4A4A4A">
+
+            <ImageView
+                android:id="@+id/toolbar_logo"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="16dp"
+                app:srcCompat="@drawable/logo" />
+
+        </androidx.appcompat.widget.Toolbar>
 
         <LinearLayout
             android:id="@+id/stepper_container"
@@ -75,110 +85,130 @@
             android:layout_margin="16dp"
             app:cardCornerRadius="15dp"
             app:cardElevation="8dp"
-            app:cardBackgroundColor="#F1D4CE"> <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="20dp"
-            android:orientation="vertical">
+            app:cardBackgroundColor="#F1D4CE">
+
             <LinearLayout
-                android:id="@+id/layout_step1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="20dp"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:text="בחר סוג טיפול"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/btn_reiki"
+                <LinearLayout
+                    android:id="@+id/layout_step1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="רייקי וסאונד הילינג"
-                    android:backgroundTint="@color/step_active"
-                    android:textColor="@color/white"/>
+                    android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/btn_training"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:text="בחר סוג טיפול"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/btn_reiki"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="רייקי וסאונד הילינג"
+                        android:backgroundTint="#A57C7C"
+                        android:textColor="@color/white"/>
+
+                    <Button
+                        android:id="@+id/btn_training"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="אימון הוליסטי"
+                        android:backgroundTint="#A57C7C"
+                        android:textColor="@color/white"/>
+
+                    <Button
+                        android:id="@+id/btn_emr"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="EMR"
+                        android:backgroundTint="#A57C7C"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_step2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="אימון הוליסטי"
-                    android:backgroundTint="@color/step_active"
-                    android:textColor="@color/white"/>
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
-                <Button
-                    android:id="@+id/btn_emr"
+                    <CalendarView
+                        android:id="@+id/calendarView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="בחרו שעה פנויה:"
+                        android:layout_marginTop="20dp"
+                        android:layout_gravity="center"
+                        android:textSize="16sp"
+                        android:textColor="#4A4A4A"
+                        android:textStyle="bold" />
+
+                    <GridLayout
+                        android:id="@+id/grid_time_slots"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:columnCount="3"
+                        android:padding="4dp"
+                        android:alignmentMode="alignMargins"
+                        android:columnOrderPreserved="false"
+                        android:layout_gravity="center">
+                    </GridLayout>
+
+                    <Button
+                        android:id="@+id/btn_confirm_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="קבעו תור עכשיו"
+                        android:backgroundTint="@color/step_active"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_success"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="EMR"
-                    android:backgroundTint="@color/step_active"
-                    android:textColor="@color/white"/>
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/info"
+                        app:tint="@color/step_done"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="התור נקבע!"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/step_done"
+                        android:layout_marginTop="12dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="פרטי התור נשמרו בהצלחה"
+                        android:layout_marginTop="4dp"/>
+                    <Button
+                        android:id="@+id/btn_go_back"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="חזרה לדף הבית"
+                        android:backgroundTint="@color/step_active"/>
+                </LinearLayout>
             </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout_step2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility="gone">
-
-                <CalendarView
-                    android:id="@+id/calendarView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/tv_selected_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:text="טרם נבחרה שעה"
-                    android:textColor="#4A4A4A"
-                    android:textStyle="italic" />
-
-                <Button
-                    android:id="@+id/btn_confirm_time"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="קבע תור עכשיו"
-                    android:backgroundTint="@color/step_active"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout_success"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:visibility="gone">
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@android:drawable/ic_dialog_info"
-                    app:tint="@color/step_done"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="התור נקבע!"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/step_done"
-                    android:layout_marginTop="12dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="פרטי התור נשמרו בהצלחה"
-                    android:layout_marginTop="4dp"/>
-            </LinearLayout>
-        </LinearLayout>
         </androidx.cardview.widget.CardView>
     </LinearLayout>
 

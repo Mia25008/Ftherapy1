@@ -6,6 +6,11 @@
         android:checkableBehavior="single">
 
         <item
+            android:id="@+id/nav_main"
+            android:icon="@drawable/home"
+            android:title="דף ראשי" />
+
+        <item
             android:id="@+id/nav_info"
             android:icon="@drawable/info"
             android:title=" שיטות טיפול ומיקום" />
@@ -17,7 +22,7 @@
 
         <item
             android:id="@+id/nav_update"
-            android:icon="@drawable/person"
+            android:icon="@drawable/profile"
             android:title="עדכון פרטים" />
 
         <item
